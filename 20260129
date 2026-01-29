@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 行业双周资讯简报</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #111827;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --tag-bg: rgba(148,163,184,0.16);
+      --tag-text: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0,2fr) minmax(0,1.4fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      letter-spacing: 0.03em;
+      color: #f9fafb;
+    }
+
+    .hero-text .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-text .meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 18px;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.3), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(129,140,248,0.25), transparent 55%),
+                  #020617;
+      border: 1px solid rgba(55,65,81,0.8);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.9);
+      min-height: 180px;
+    }
+
+    .hero-image-main {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e5f2ff;
+      margin-bottom: 10px;
+    }
+
+    .hero-image-sub {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 260px;
+    }
+
+    .hero-pill {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      font-size: 11px;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.26);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148,163,184,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      font-size: 10px;
+      text-align: center;
+      padding: 8px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      background: rgba(15,23,42,0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 8px;
+      z-index: 10;
+    }
+
+    nav a {
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      background: rgba(15,23,42,0.95);
+      border-color: rgba(148,163,184,0.4);
+    }
+
+    .section {
+      margin-bottom: 32px;
+      padding: 22px 20px 20px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.96));
+      border: 1px solid rgba(31,41,55,0.95);
+      box-shadow: 0 20px 45px rgba(15,23,42,0.9);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #f9fafb;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .section-meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 55%),
+                  #020617;
+      border-radius: 14px;
+      padding: 14px 14px 13px;
+      border: 1px solid rgba(31,41,55,0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      color: #e5f2ff;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .card-rank {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: #d1d5db;
+      margin-bottom: 6px;
+    }
+
+    .card-body p {
+      margin: 2px 0;
+    }
+
+    .card-body strong {
+      color: #e5f2ff;
+      font-weight: 500;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.95);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(37,99,235,0.7);
+      color: #bfdbfe;
+    }
+
+    .link-pill svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .heat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部区域 -->
+    <header>
+      <div class="hero-text">
+        <h1>AI 行业双周资讯简报</h1>
+        <div class="subtitle">
+          覆盖大模型厂商动态、新兴产品与商业模式，以及企业财务管理领域的 AI 实践。
+        </div>
+        <div class="meta">
+          统计时间：<strong>2026-01-15 ～ 2026-01-29</strong>（重点关注近两周高热度公开报道）<br />
+          数据来源：主流财经与科技媒体公开信息（新浪、央广网、腾讯新闻等）
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">Qwen / 文心 / 豆包 / 扣子</span>
+          <span class="hero-tag">AI 办事时代 &amp; 超级入口</span>
+          <span class="hero-tag">Agent &amp; Skill Store</span>
+          <span class="hero-tag">智能报销与风控</span>
+        </div>
+      </div>
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          实时聚焦 · 近两周
+        </div>
+        <div class="hero-image-main">从“聊天”到“办事”：<br />AI 商业闭环加速成形</div>
+        <div class="hero-image-sub">
+          Qwen3-Max-Thinking、文心 5.0、扣子 2.0 与行业级财务智能化方案，共同勾勒 2026 年开年 AI 产业图景。
+        </div>
+        <div class="hero-orbit">
+          重量级模型进化<br />＋<br />垂直场景最佳实践
+        </div>
+      </div>
+    </header>
+
+    <!-- 导航 -->
+    <nav>
+      <a href="#module1">模块一 · 头部大模型与品牌动态</a>
+      <a href="#module2">模块二 · 新涌现品牌与产品创新</a>
+      <a href="#module3">模块三 · 财务管理 AI 最佳实践</a>
+    </nav>
+
+    <!-- 模块一 -->
+    <section id="module1" class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">模块一：头部大模型与重量级品牌动态</div>
+          <div class="section-subtitle">
+            聚焦 Qwen、文心、豆包、扣子等国内外头部模型／品牌的版本发布、功能升级和战略走向。
+          </div>
+        </div>
+        <div class="section-meta">
+          按讨论热度与行业影响力排序<br />
+          覆盖日期：2026-01-15 ～ 2026-01-27
+        </div>
+      </div>
+
+      <div class="heat-label">筛选出 4 条近两周热度最高的资讯：</div>
+
+      <div class="card-grid">
+        <!-- 1. Qwen3-Max-Thinking -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">阿里发布千问最强推理模型 Qwen3-Max-Thinking，性能直逼 GPT-5.2 / Gemini 3 Pro</h3>
+            <span class="card-tag">Qwen · 推理模型</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#1</strong> · 发布日期：<strong>2026-01-27</strong></div>
+          <div class="card-body">
+            <p><strong>关键信息概括</strong>：阿里云发布旗舰推理模型 <strong>Qwen3-Max-Thinking</strong>，总参数超万亿、预训练数据量达 36T tokens，是目前阿里规模最大、能力最强的千问推理模型。</p>
+            <p>在涵盖事实知识、复杂推理、指令遵循、人类偏好对齐与 Agent 能力的 <strong>19 项权威基准</strong> 中刷新多项记录，
+              <strong>整体性能媲美 GPT-5.2-Thinking、Claude Opus 4.5、Gemini 3 Pro</strong>。</p>
+            <p>模型采用全新的 <strong>Test-time Scaling 测试时扩展机制</strong>，通过“经验提取＋多轮自我迭代”减少冗余推理，在启用工具的 HLE 测试中获得
+              <strong>58.3 分</strong>，显著超过 GPT-5.2-Thinking（45.5）和 Gemini 3 Pro（45.8）。</p>
+            <p>在 Agent 能力上，模型可自主调用搜索、个性化记忆、代码解释器等工具，降低幻觉率，为复杂企业级应用提供更可靠的“可执行推理”能力；同时，Qwen 家族在 HuggingFace 上衍生模型已超 20 万个、累计下载量破 10 亿，成为全球开源模型生态的领跑者之一。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://finance.sina.com.cn/stock/t/2026-01-27/doc-inhiseyq0303608.shtml" target="_blank" rel="noopener noreferrer">
+                <span>查看参考报道</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              推理能力与 Agent 共同强化，大模型从“回答问题”走向“执行复杂任务”
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. 千问打通阿里生态 + 办事时代 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">千问 App 接入阿里全生态，上线 400+ 办事功能，抢占 “AI 超级入口”</h3>
+            <span class="card-tag">Qwen · AI 办事时代</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#2</strong> · 发布日期：<strong>2026-01-15</strong></div>
+          <div class="card-body">
+            <p><strong>关键信息概括</strong>：千问 App 宣布月活破亿，并在新版本中
+              <strong>一口气上线 400+ 办事功能</strong>，深度打通淘宝、饿了么、飞猪、高德、支付宝政务服务等阿里系应用。</p>
+            <p>用户只需自然语言一句话（如“周末 500 元预算去露营”），AI 即可跨应用调度高德、飞猪、淘宝等服务，实现
+              <strong>从需求理解 → 方案生成 → 下单支付</strong> 的交易闭环，被阿里官方定义为 “<strong>AI 办事时代</strong>”。</p>
+            <p>背后依托的是千问在 <strong>Coding 能力、全模态理解、超长上下文</strong> 上的升级：支持读取界面、图文报表与语音输入，并通过 “任务助理” 功能完成 Office 报表整理、研报撰写、小工具开发等多步骤复杂任务。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://news.sina.cn/ai/2026-01-15/detail-inhhiyxv7745015.d.html?vt=4" target="_blank" rel="noopener noreferrer">
+                <span>查看参考报道</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+              <a class="link-pill" href="https://new.qq.com/rain/a/20260115A03C2L00" target="_blank" rel="noopener noreferrer">
+                <span>阿里生态打通深度解读</span>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              模型能力 + 生活服务生态，形成从流量到 GMV 的完整闭环
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. 文心 5.0 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">百度发布 2.4 万亿参数原生全模态 “文心大模型 5.0”</h3>
+            <span class="card-tag">文心 · 全模态大模型</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#3</strong> · 发布日期：<strong>2026-01-22</strong></div>
+          <div class="card-body">
+            <p><strong>关键信息概括</strong>：百度正式发布 <strong>文心大模型 5.0</strong>，参数规模 2.4 万亿，采用统一自回归架构和
+              <strong>原生全模态联合训练</strong>，在文本、图像、音频、视频等多模态上统一理解与生成。</p>
+            <p>在 40 余项语言与多模态权威基准上，百度披露文心 5.0 的综合表现已超越
+              <strong>Gemini-2.5-Pro、GPT-5-High</strong> 等国际模型，进入全球第一梯队；图像与视频生成能力达到垂直专精模型水准。</p>
+            <p>在应用层，百度通过 “千帆平台” 提供 150+ 模型与完整 Agent 开发工具链，已经累计开发
+              <strong>130 万+</strong> Agents，并重点推出 5 分钟超越真人的直播合成、实时交互数字人等应用，强化其在 ToB AI 云市场的地位。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://www.cnr.cn/shanghai/kcxtd/20260123/t20260123_527503441.shtml" target="_blank" rel="noopener noreferrer">
+                <span>查看参考报道</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              “芯—云—模—体” 全栈闭环，强化百度在行业级 AI 解决方案上的护城河
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. 字节扣子 2.0 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">字节跳动扣子 2.0：引入 Agent Skills 与 Agent Plan，指向长期目标驱动的智能体平台</h3>
+            <span class="card-tag">扣子 Coze · Agent 平台</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#4</strong> · 发布日期：<strong>2026-01-19</strong></div>
+          <div class="card-body">
+            <p><strong>关键信息概括</strong>：字节旗下 AI 智能体开发平台 <strong>“扣子”（Coze）发布 2.0 版本</strong>，核心更新是引入
+              <strong>Agent Skills（技能封装）</strong> 与 <strong>Agent Plan（长期计划）</strong> 两大能力。</p>
+            <p>Skills 将特定工作流、工具调用逻辑与最佳实践封装为可复用模块，并通过 <strong>“技能商店”</strong> 支持上传与分发，实现隐性职业经验的“代码化流转”；Agent Plan 则支持围绕长期目标拆解阶段任务、制定执行节奏，从“一问一答的 Prompt 交互”升级为“目标导向的持续运营”。</p>
+            <p>同时，扣子上线视频创作 Skill、升级云端 Vibe Coding 开发平台，并强化深度办公场景中的多轮上下文理解，进一步降低大规模 AI 应用构建与部署的门槛。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener noreferrer">
+                <span>查看参考报道</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              从通用大模型到“技能生态”，构建可复用的专业能力市场
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 模块二 -->
+    <section id="module2" class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">模块二：新涌现品牌与产品形态 / 商业模式创新</div>
+          <div class="section-subtitle">
+            聚焦近两周新发布或完成关键升级的 AI 产品，重点观察产品形态与商业模式的创新点。
+          </div>
+        </div>
+        <div class="section-meta">
+          按话题热度与创新程度排序<br />
+          覆盖日期：2026-01-15 ～ 2026-01-19
+        </div>
+      </div>
+
+      <div class="heat-label">筛选出 3 条近两周内具代表性的创新产品：</div>
+
+      <div class="card-grid">
+        <!-- 1. 扣子 2.0 Skill Store 商业模式 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">扣子 2.0：从“大模型工具”到“技能市场”，职业经验开始标准化交易</h3>
+            <span class="card-tag">Agent 技能商店</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#1</strong> · 发布日期：<strong>2026-01-19</strong></div>
+          <div class="card-body">
+            <p><strong>产品形态</strong>：扣子从“对话式 Bot 构建平台”升级为 “<strong>Agent 技能平台</strong>”，以 Skills + Plan 组织能力，
+              支持开发者围绕复杂业务链路构建可复用的智能体组件。</p>
+            <p><strong>商业模式亮点</strong>：通过 <strong>技能商店</strong>，企业和个人可以将营销、运营、合规、投放等领域的经验封装为 Skills，
+              在组织内部或生态内分发复用，未来具备按调用量、订阅制等多种变现空间。</p>
+            <p><strong>创新点</strong>：将“隐性经验”抽象为可组合、可调用的代码模块，为 AI 时代的“专业知识产权”与团队协作模式提供了新的资产形态。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener noreferrer">
+                <span>查看产品详解</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              “技能即资产”的新供给侧形态，有望催生 B2B / B2D 级应用市场
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. 京东健康 “知医” -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">京东健康发布循证医学 AI 产品 “知医”，定位医生的 “智能外脑”</h3>
+            <span class="card-tag">医疗垂直模型</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#2</strong> · 发布日期：<strong>2026-01-17</strong></div>
+          <div class="card-body">
+            <p><strong>产品形态</strong>：“知医”面向医生群体，深度整合 <strong>千万级全球权威医学文献与指南</strong>，
+              聚焦 <strong>临床决策支持 + 科研学术</strong> 两大场景，输出结构化、可落地的循证结论。</p>
+            <p><strong>商业模式亮点</strong>：产品将 <strong>全面集成进京东医生 App</strong>，并对所有医生免费开放，不限定是否入驻京东健康平台，
+              通过提升医生效率与专业影响力来带动平台粘性和医疗服务生态扩张。</p>
+            <p><strong>创新点</strong>：相较于面向患者的问诊助手，“知医”直接面向专业端，将大模型能力嵌入医生的日常科研与临床流程，
+              形成“医生成果 × 平台生态”的双向增值闭环。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://finance.sina.cn/2026-01-17/detail-inhhrczv9740897.d.html?vt=4" target="_blank" rel="noopener noreferrer">
+                <span>查看参考报道</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              用 “AI 外脑” 服务专业群体，借免费策略换取高粘性 B 端生态
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. 全球视角（Gemini + 沃尔玛 / Operator）经由华尔街见闻报道 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">全球视角：Gemini × 沃尔玛、OpenAI Operator 等探索 AI 商业闭环</h3>
+            <span class="card-tag">海外案例（国内报道）</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#3</strong> · 报道日期：<strong>2026-01-15</strong></div>
+          <div class="card-body">
+            <p><strong>产品形态</strong>：据华尔街见闻在对千问生态报道中的梳理，<strong>Google Gemini 与沃尔玛</strong> 的合作通过统一商业协议调用实时库存，
+              支持用户在对话中直接完成选品与支付；OpenAI 也在推进代号 “<strong>Operator</strong>” 的浏览器级代理。</p>
+            <p><strong>商业模式亮点</strong>：海外巨头同样从大模型订阅（SaaS）向 <strong>深度绑定零售与支付场景</strong> 转型，
+              通过与线下零售、物流网络联动，把 AI 从 “内容工具” 推向 “交易基础设施”。</p>
+            <p><strong>创新点</strong>：无论是 Geminix 沃尔玛还是 Operator，本质上都在重构 “搜索 / 对话 → 决策 → 交易” 的闭环，
+              与国内千问 “AI 办事时代” 的路径形成呼应，也印证 AI 超级入口之争正在全球同步上演。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://new.qq.com/rain/a/20260115A03C2L00" target="_blank" rel="noopener noreferrer">
+                <span>查看华尔街见闻梳理</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              海内外正从 “对话体验” 共同迈向 “可衡量 GMV 的交易入口”
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 模块三 -->
+    <section id="module3" class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">模块三：企业财务管理领域的 AI 最佳实践</div>
+          <div class="section-subtitle">
+            聚焦 TMT 大型企业、传统 500 强企业与金融机构 / 监管相关实践，涵盖报销、共享、风控与监管试点。
+          </div>
+        </div>
+        <div class="section-meta">
+          实战案例为主，兼顾近两周出炉的最新方案与近期行业权威报告<br />
+          重点时间点：2026-01-07 等 2025 Q4～2026 Q1 权威案例
+        </div>
+      </div>
+
+      <div class="heat-label">筛选出 4 条具代表性的最佳实践案例（按讨论度与可复用价值排序）：</div>
+
+      <div class="card-grid">
+        <!-- 1. 中兴新云 x 腾讯云（TMT + 连锁零售） -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">中兴新云 × 腾讯云：将报销周期从 10 天压缩到 2 小时的 AI 财务共享方案</h3>
+            <span class="card-tag">TMT 集团 + 连锁零售</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#1</strong> · 方案时间：<strong>2026-01-07 公布</strong></div>
+          <div class="card-body">
+            <p><strong>适用对象</strong>：以 <strong>中兴通讯生态</strong> 为代表的大型 TMT 企业，以及美宜佳等全国性连锁零售集团，在建设财务共享中心和统一费用管理平台时。</p>
+            <p><strong>场景与效果</strong>（来源：腾讯云开发者社区方案介绍）：</p>
+            <p>· <strong>AI 智能报销</strong>：员工通过自然语言 + 拍照上传发票，系统自动识别票据信息、匹配报销规则并填单，
+              将报销周期从传统的 <strong>约 10 天缩短到 2 小时</strong> 左右。</p>
+            <p>· <strong>AI 智审</strong>：基于多维度规则引擎 + 大模型，对费用、合同、票据进行自动风险识别，
+              <strong>风险识别准确率约 90%</strong>，可减少约 <strong>90%</strong> 的人工审核工作量。</p>
+            <p>· <strong>费用数字孪生</strong>：通过 11 维度数据构建费用数字孪生模型，按部门 / 项目 / 时间等维度进行精细化分析，
+              支撑预算控制、费用结构优化与管理层决策。</p>
+            <p><strong>技术要点</strong>：底层依托腾讯云 OCR 全票种识别、大语言模型与 TDSQL 数据库等，实现从数据采集、规则引擎到可视化决策的一体化闭环。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener noreferrer">
+                <span>查看详细方案（腾讯云）</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              推荐给：计划建设或升级财务共享中心的 TMT / 零售 / 快消等大型企业
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. 大模型驱动智能财务审核（央企共享中心案例） -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">大型央企财务共享中心：大模型 + OCR 重构票据审核，引入 “智能质检” 机制</h3>
+            <span class="card-tag">央企 · 财务共享中心</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#2</strong> · 行业报告时间：<strong>2025 Q4～2026 Q1</strong></div>
+          <div class="card-body">
+            <p><strong>适用对象</strong>：资产和业务体量庞大的中央企业、世界 500 强传统企业，希望把票据审核、合规检查从人工转向智能化的财务共享中心。</p>
+            <p><strong>典型数据（综合近期行业实践与公开技术文章）</strong>：</p>
+            <p>· 日常运营中，某央企共享中心月均处理 <strong>约 8 万张票据</strong>，通过大模型 + OCR 建立统一票据知识图谱后，
+              <strong>人工审核工作量下降约 75%</strong>，票据审核周期从 3 天压缩到约 4 小时。</p>
+            <p>· 全年可拦截异常票据超 <strong>千笔</strong>，避免的潜在经济损失达数百万元；AI 质检可对人工审核结果进行 “二次抽检”，形成
+              <strong>“人审 + 机审 + 质检”</strong> 的闭环。</p>
+            <p>· 结合企业私域制度库，系统可自动识别重复报销、税率异常、抬头错误等问题，并按风险等级推送给不同层级审批人。</p>
+            <p><strong>最佳实践要点</strong>：将大模型训练在内部报销制度、历史票据与审计结论之上，通过 RAG 提升对本企业规则的理解，
+              同时以风险标签沉淀为后续风控与审计提供结构化数据资产。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <span class="link-pill">
+                <span>基于多篇财务数智化与票据 AI 审核公开案例综合整理</span>
+              </span>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              推荐给：已有共享中心、希望进一步用 AI 提升质检与内控水平的央企 / 500 强集团
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. 银行案例：湖州银行生成式 AI 风控（央行监管试点） -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">湖州银行企业贷款风控服务：入选央行金融科技创新应用的生成式 AI 风控案例</h3>
+            <span class="card-tag">银行 · 监管试点</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#3</strong> · 创新声明时间：<strong>2025-10（持续试点中）</strong></div>
+          <div class="card-body">
+            <p><strong>适用对象</strong>：中大型商业银行及金融机构，尤其是希望在监管框架下探索企业授信智能风控的机构。</p>
+            <p><strong>案例概述</strong>（来源：中国人民银行分支机构金融科技创新应用声明书）：</p>
+            <p>· 湖州银行建设 <strong>“基于生成式人工智能技术的企业贷款风控服务”</strong>，在获得企业授权前提下，整合工商、税务、司法涉诉及行内交易数据，
+              通过机器学习构建风控模型，评估贷款信用与欺诈风险。</p>
+            <p>· 生成式 AI 用于对多组判别式模型输出的逾期概率进行分析，
+              <strong>整合生成企业级风险评估报告</strong>，帮助客户经理识别潜在风险点并制定应对策略。</p>
+            <p>· 项目通过合法合规与技术安全双重评估，遵循《数据安全法》《个人信息保护法》及多项金融行业技术规范，被纳入央行金融科技创新监管试点范围。</p>
+            <p><strong>最佳实践要点</strong>：在严监管行业，推荐采用 “判别式模型 + 生成式 AI 报告” 的协同模式，
+              将关键决策逻辑前置固化，再用大模型负责解释与策略建议，可在合规与效果之间取得平衡。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <a class="link-pill" href="https://huhehaote.pbc.gov.cn/hangzhou/125248/5877438/2025102316223368185.pdf" target="_blank" rel="noopener noreferrer">
+                <span>查看央行金融科技创新应用声明</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.5 3h6a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V4.707L4.854 11.854a.5.5 0 0 1-.708-.708L11.293 4H6.5a.5.5 0 0 1 0-1z"/></svg>
+              </a>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              为金融机构在大模型风控上的合规路径提供可参考的监管试点范本
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. 行业趋势小结 -->
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">行业共识：从 “工具型 AI” 向 “部门级协同智能体” 迁移</h3>
+            <span class="card-tag">趋势总结</span>
+          </div>
+          <div class="card-rank">热度排序：<strong>#4</strong> · 依据多篇 2025 Q4～2026 Q1 行业报告</div>
+          <div class="card-body">
+            <p><strong>综合趋势</strong>：</p>
+            <p>· AI 在财务领域的应用正从 <strong>单点工具（智能报销、发票识别）</strong> 走向
+              <strong>部门级协同（财务 + 风控 + 审计 + 业务部门）</strong> 的智能体体系。</p>
+            <p>· 调研显示，超过三成受访企业已在财务管理中采用大模型技术，
+              中央企业与国资背景集团的渗透率显著更高，成为数智化创新的先行者。</p>
+            <p>· 主流实践路径是以 <strong>“财务共享中心”为组织载体</strong>，分阶段引入智能报销、票据审单、费用分析、预算预测等能力，
+              在可解释性与可控性前提下逐步扩大 AI 决策参与度。</p>
+            <p><strong>对 TMT 与 500 强企业的启示</strong>：建议从高频、规则相对明确的场景切入（报销、票据审核），
+              以 “人机协同 + 风险可视化” 为目标，通过数据沉淀再向预算管理、经营分析与战略决策延伸。</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-links">
+              <span class="link-pill">
+                <span>来源：多份财务数智化白皮书与云厂商实践文章的综合归纳</span>
+              </span>
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              建议将大模型作为财务中台的 “智能层”，而非孤立工具
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      本简报仅基于公开信息渠道梳理，供内部研讨与学习参考，不构成任何投资或商业决策建议。
+    </footer>
+  </div>
+</body>
+</html>
