@@ -528,6 +528,25 @@
       opacity: 0.6;
     }
 
+    .glossary {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+      padding: 12px 14px;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      line-height: 1.65;
+    }
+    .glossary-title { font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .glossary dd { margin: 0 0 4px 1em; }
+    .glossary dt { font-weight: 500; color: var(--text); }
+    .glossary dt::after { content: '：'; }
+    .glossary-details { margin-top: 8px; }
+    .glossary-details summary { cursor: pointer; font-weight: 600; color: var(--text); }
+    .glossary-say { font-size: 12px; color: var(--text-soft); margin-top: 8px; padding: 8px 10px; background: var(--bg-subtle); border-radius: 6px; border-left: 3px solid var(--accent); }
+    .glossary-say strong { color: var(--text); }
+
     footer {
       margin-top: 32px;
       padding-top: 20px;
@@ -581,19 +600,18 @@
       </div>
       <div class="sidebar-label">当前期</div>
       <div class="sidebar-current">
-        <span class="sidebar-current-title">第 2 期</span>
-        <span class="issue-date">01.15 ～ 01.29</span>
+        <span class="sidebar-current-title">第 2 期</span> <span class="issue-date">01.15 ～ 01.29</span>
       </div>
       <div class="sidebar-label">历史简报</div>
       <ul class="sidebar-list">
         <li>
-          <button type="button" data-issue="1">第 1 期<span class="issue-date"> 01.01 ～ 01.14</span></button>
+          <button type="button" data-issue="1">第 1 期 <span class="issue-date">01.01 ～ 01.14</span></button>
         </li>
         <li>
-          <button type="button" class="active" data-issue="2">第 2 期<span class="issue-date"> 01.15 ～ 01.29</span></button>
+          <button type="button" class="active" data-issue="2">第 2 期 <span class="issue-date">01.15 ～ 01.29</span></button>
         </li>
         <li>
-          <button type="button" data-issue="3">第 3 期<span class="issue-date"> 02.01 ～ 02.14</span></button>
+          <button type="button" data-issue="3">第 3 期 <span class="issue-date">02.01 ～ 02.14</span></button>
         </li>
       </ul>
     </aside>
@@ -606,6 +624,27 @@
           <h1>第 1 期</h1>
           <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
           <p class="meta">统计区间：2026-01-01 ～ 2026-01-14</p>
+          <div class="glossary">
+            <span class="glossary-title">💡 阅读说明</span>
+            <p style="margin:0 0 8px;">为方便不熟悉技术名词的读者，简报中部分内容附有<strong>「通俗说」</strong>白话解读；文末附<strong>「术语简表」</strong>可随时查阅。</p>
+            <details class="glossary-details">
+              <summary class="glossary-title">术语简表（点击展开）</summary>
+              <dl style="margin:8px 0 0;">
+                <dt>大模型 / 大语言模型</dt><dd>能理解与生成文字的 AI，参数规模越大通常能力越强。</dd>
+                <dt>开源</dt><dd>代码或模型公开，开发者可免费使用、二次开发。</dd>
+                <dt>Agent / 智能体</dt><dd>能按步骤执行任务的 AI，不只聊天，还能操作软件、查数据、发邮件等。</dd>
+                <dt>端侧 / 端云一体</dt><dd>在手机、电脑本地跑一部分 AI，再结合云端，兼顾速度与隐私。</dd>
+                <dt>RAG</dt><dd>检索增强生成：先查企业资料/知识库再回答，减少 AI「瞎编」。</dd>
+                <dt>IaaS / PaaS</dt><dd>云计算形态：IaaS 约等于租服务器，PaaS 约等于租平台能力（如数据库、AI 接口）。</dd>
+                <dt>向量检索 / 语义检索</dt><dd>按「意思」找相似内容，而不是只按关键词匹配。</dd>
+                <dt>基准 / 评测</dt><dd>用统一题目给不同 AI 打分，便于横向对比。</dd>
+                <dt>HLE / 综合能力评测</dt><dd>一种综合考察 AI 多维度能力的分数，分数越高表示整体能力越强。</dd>
+                <dt>库内推理</dt><dd>在数据库内部直接调用 AI 计算，数据不用导出，更快、更安全。</dd>
+                <dt>OCR</dt><dd>把图片里的文字识别成可编辑文本的技术。</dd>
+                <dt>数字孪生</dt><dd>用系统里的数据「复制」真实业务，便于做分析和预测。</dd>
+              </dl>
+            </details>
+          </div>
         </header>
         <nav class="nav-inline">
           <a href="#p1-m1">头部产品动态</a>
@@ -632,6 +671,7 @@
                 <li>1 月 13 日报道：Qwen 在 Hugging Face 下载量达 7 亿次，成为全球最受欢迎的开源 AI 系统之一。</li>
                 <li>已开源近 400 个模型，衍生版本超 18 万个；12 月单月下载量超过 Meta、DeepSeek、OpenAI 等八家总和。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里的 Qwen 在「程序员版应用商店」里下载量第一，且完全开放、可二次开发，国内外开发者都在用。</p>
             </div>
             <a class="card-link" href="https://english.news.cn/20260113/004b0522f987475cbf83ffc3a8d009aa/c.html" target="_blank" rel="noopener">参考：新华网英文</a>
           </article>
@@ -643,6 +683,7 @@
                 <li>1 月 8 日智谱 AI 在香港上市，被外媒称为中国「AI 老虎」首家登陆资本市场。</li>
                 <li>同日 OpenAI 知识图谱等动态受关注，与智谱 IPO 共同成为当周热点。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>智谱（做 GLM 等大模型的公司）成为国内「AI 老虎」里第一家在香港挂牌上市的企业，标志 AI 公司开始进入资本市场。</p>
             </div>
             <a class="card-link" href="https://www.cnbc.com/2026/01/08/china-ai-tiger-goes-ipo-zhipu-hong-kong-debut-openai-knowledge-atlas-hsi-hang-seng-listing.html" target="_blank" rel="noopener">参考：CNBC</a>
           </article>
@@ -655,6 +696,7 @@
                 <li>1 月 7 日 ChatGPT Health 正式发布；1 月 8 日 OpenAI for Healthcare 新品亮相。</li>
                 <li>医疗场景成为 OpenAI 产品线重点方向之一。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>OpenAI 推出面向健康和医疗的专用产品，医生、患者、药企等都能用 AI 辅助问诊与决策。</p>
             </div>
             <a class="card-link" href="https://openai.com/zh-Hans-CN/news/product-releases/" target="_blank" rel="noopener">参考：OpenAI 新闻</a>
           </article>
@@ -670,6 +712,7 @@
                 <li>1 月 8 日发布；采用「端云一体」混合架构，已嵌入 AI 手机、AI 平板。</li>
                 <li>全球首款个人超级智能体 Lenovo Qira 同步发布。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>联想在手机/平板上做了「个人 AI 助手」：一部分在设备里算、一部分用云端，既能聊天也能执行任务，减少隐私外泄。</p>
             </div>
             <a class="card-link" href="https://finance.sina.com.cn/tech/2026-01-08/doc-inhfqyhi5220787.shtml" target="_blank" rel="noopener">参考：新浪科技</a>
           </article>
@@ -681,6 +724,7 @@
                 <li>1 月 9 日阿里云与听力熊联合推出，基于通义千问深度定制的儿童 AI 对话智能体。</li>
                 <li>具备情感识别与共情能力，不止会聊天、更懂孩子情绪与成长。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>面向孩子的 AI 陪聊伙伴，用阿里大模型专门为儿童调教，能识别情绪、陪学陪玩，形态与内容都更适配儿童。</p>
             </div>
             <a class="card-link" href="https://www.chinaz.com/ainews/24465.shtml" target="_blank" rel="noopener">参考：ChinaZ</a>
           </article>
@@ -696,6 +740,7 @@
                 <li>中兴新云 × 腾讯云方案：报销周期 10 天 → 约 2 小时，AI 智审风险识别约 90%、人工审核量降约 90%。</li>
                 <li>阿里商旅智能审核：98% 自动核验率，处理耗时缩短约 70%；合思 AI 报销将员工操作压至 3 分钟内。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>用 AI 自动填单、自动审发票和规则，报销从「等十来天」变成「几小时」，人工只需处理少数异常。</p>
             </div>
             <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
           </article>
@@ -712,6 +757,7 @@
                 <li>阿里云 PolarDB、AWS Aurora + Bedrock、Azure Cosmos DB 等均在 1 月集中释放 AI 融合能力（部分发布于 1 月中下旬）。</li>
                 <li>库内推理、向量检索、RAG 知识库成为云数据库标配能力。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>各大云的数据库都在「接上 AI」：在库里直接算 AI、按意思查资料、先查企业知识再回答，成为常规功能。</p>
             </div>
             <a class="card-link" href="https://help.aliyun.com/zh/polardb/polardb-for-mysql/user-guide/polardb-for-ai/" target="_blank" rel="noopener">参考：PolarDB for AI</a>
           </article>
@@ -726,6 +772,27 @@
           <h1>第 2 期</h1>
           <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
           <p class="meta">统计区间：2026-01-15 ～ 2026-01-29</p>
+          <div class="glossary">
+            <span class="glossary-title">💡 阅读说明</span>
+            <p style="margin:0 0 8px;">为方便不熟悉技术名词的读者，简报中部分内容附有<strong>「通俗说」</strong>白话解读；下方<strong>「术语简表」</strong>可随时查阅。</p>
+            <details class="glossary-details">
+              <summary class="glossary-title">术语简表（点击展开）</summary>
+              <dl style="margin:8px 0 0;">
+                <dt>大模型 / 大语言模型</dt><dd>能理解与生成文字的 AI，参数规模越大通常能力越强。</dd>
+                <dt>开源</dt><dd>代码或模型公开，开发者可免费使用、二次开发。</dd>
+                <dt>Agent / 智能体</dt><dd>能按步骤执行任务的 AI，不只聊天，还能操作软件、查数据、发邮件等。</dd>
+                <dt>端侧 / 端云一体</dt><dd>在手机、电脑本地跑一部分 AI，再结合云端，兼顾速度与隐私。</dd>
+                <dt>RAG</dt><dd>检索增强生成：先查企业资料/知识库再回答，减少 AI「瞎编」。</dd>
+                <dt>IaaS / PaaS</dt><dd>云计算形态：IaaS 约等于租服务器，PaaS 约等于租平台能力（如数据库、AI 接口）。</dd>
+                <dt>向量检索 / 语义检索</dt><dd>按「意思」找相似内容，而不是只按关键词匹配。</dd>
+                <dt>基准 / 评测</dt><dd>用统一题目给不同 AI 打分，便于横向对比。</dd>
+                <dt>HLE / 综合能力评测</dt><dd>一种综合考察 AI 多维度能力的分数，分数越高表示整体能力越强。</dd>
+                <dt>库内推理</dt><dd>在数据库内部直接调用 AI 计算，数据不用导出，更快、更安全。</dd>
+                <dt>OCR</dt><dd>把图片里的文字识别成可编辑文本的技术。</dd>
+                <dt>数字孪生</dt><dd>用系统里的数据「复制」真实业务，便于做分析和预测。</dd>
+              </dl>
+            </details>
+          </div>
         </header>
         <nav class="nav-inline">
           <a href="#p2-m1">头部产品动态</a>
@@ -754,6 +821,7 @@
                 <li>Test-time Scaling：经验提取 + 多轮自迭代，HLE 58.3 分。</li>
                 <li>原生 Agent；Qwen 衍生模型破 20 万、下载破 10 亿。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里新旗舰模型：规模大、做题时能「多试几次」自我纠错，综合评测分数超过 GPT、Gemini；且自带「能执行任务」的 Agent 能力。</p>
             </div>
             <a class="card-link" href="https://finance.sina.com.cn/stock/t/2026-01-27/doc-inhiseyq0303608.shtml" target="_blank" rel="noopener">参考：新浪财经</a>
           </article>
@@ -765,6 +833,7 @@
                 <li>打通淘宝、飞猪、高德、支付宝等，一句话完成订票、购物、政务查询。</li>
                 <li>从「聊天」升级「办事」；平头哥计划独立上市。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>千问不再只是聊天机器人，而是能直接帮你下单、订票、查办事进度，一句话搞定阿里系里 400+ 种操作。</p>
             </div>
             <a class="card-link" href="https://new.qq.com/rain/a/20260115A03C2L00" target="_blank" rel="noopener">参考：腾讯新闻</a>
           </article>
@@ -776,6 +845,7 @@
                 <li>统一自回归架构，多模态联合训练；40+ 基准超 Gemini-2.5-Pro、GPT-5-High。</li>
                 <li>千帆 130 万+ Agents；5 分钟超越真人直播、实时数字人等。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>百度新一代大模型：能同时处理文字、图片、语音，评测分数超过谷歌和 OpenAI 同档产品；平台上已有百万级「可执行任务」的 AI 应用。</p>
             </div>
             <a class="card-link" href="https://www.cnr.cn/shanghai/kcxtd/20260123/t20260123_527503441.shtml" target="_blank" rel="noopener">参考：央广网</a>
           </article>
@@ -787,6 +857,7 @@
                 <li>Skills 封装工作流与最佳实践，技能商店支持上传/分发。</li>
                 <li>Plan 支持长期目标拆解与周期执行。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>扣子把「一套操作流程」打包成「技能」，别人可以下载使用；还能给 AI 定长期目标、按周期自动执行，更像真正的助手。</p>
             </div>
             <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
           </article>
@@ -800,6 +871,7 @@
                 <li>Chrome 侧边栏集成 Gemini 3，Pro/Ultra 可体验自动点击、输入、滚动（美国先行）。</li>
                 <li>Personal Intelligence 连接 Gmail/Photos/YouTube/Search，美国内测。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>谷歌搜索和浏览器都接上 Gemini：搜索直接给 AI 总结，Chrome 里还能让 AI 自动帮你点网页、填表；个人版可关联邮箱、相册等（美国先开放）。</p>
             </div>
             <a class="card-link" href="https://9to5google.com/2026/01/27/gemini-3-ai-overviews/" target="_blank" rel="noopener">参考：9to5Google</a>
           </article>
@@ -811,6 +883,7 @@
                 <li>聊天内直接打开并操作 Asana、Slack、Figma、Canva、Box、Hex、monday.com 等，基于 MCP Apps。</li>
                 <li>API Structured outputs 正式可用；Opus 3 已停用，建议升级 Opus 4.5。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>在 Claude 里就能直接操作 Slack、Figma、Canva 等办公/设计工具，不用来回切软件；企业用 API 也能拿到结构化结果，方便系统对接。</p>
             </div>
             <a class="card-link" href="https://www.infoworld.com/article/4122745/anthropic-integrates-third-party-apps-into-claude-reshaping-enterprise-ai-workflows-2.html" target="_blank" rel="noopener">参考：InfoWorld</a>
           </article>
@@ -821,6 +894,7 @@
               <ul>
                 <li>Thinking 推理；Instant 日常；Pro 复杂与科研。AIME 2025 满分、SWE-Bench Pro 55.6% 等。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>OpenAI 推出三种用法：深度思考型（解难题）、即时型（日常对话）、专业型（科研/复杂任务）；在数学、编程等评测里表现领先。</p>
             </div>
             <a class="card-link" href="https://getgpt.pro/blog/gpt-5.2-release-announcement" target="_blank" rel="noopener">参考：GPT-5.2 发布说明</a>
           </article>
@@ -837,6 +911,7 @@
                 <li>「带手的 Claude」：聊天 + 运行命令、处理文件、发邮件等本地任务。</li>
                 <li>WhatsApp、Telegram、Discord、Slack、iMessage 等；565+ 社区技能；3 万+ GitHub Stars，MIT 开源。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>一个能「动手干活」的个人 AI：在聊天里就能让它执行命令、发邮件、处理文件，并接入了多款社交/办公应用；代码开源，社区可扩展技能。</p>
             </div>
             <a class="card-link" href="https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot" target="_blank" rel="noopener">参考：TechCrunch</a>
           </article>
@@ -847,6 +922,7 @@
               <ul>
                 <li>Skills 封装营销、合规、投放等流程；技能商店支持上传/下载，为 B2B/B2D 技能市场铺路。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>把「营销、合规、投放」等一套流程打包成「技能」，别人可下载使用；未来可能形成企业/开发者之间的技能交易市场。</p>
             </div>
             <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
           </article>
@@ -857,6 +933,7 @@
               <ul>
                 <li>千万级文献与指南，临床决策 + 科研输出；集成京东医生 App，对全体医生免费。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>医生端 AI 助手：基于海量医学文献和指南，辅助开处方、做决策、写科研；接在京东医生 App 里，对医生免费开放。</p>
             </div>
             <a class="card-link" href="https://finance.sina.cn/2026-01-17/detail-inhhrczv9740897.d.html?vt=4" target="_blank" rel="noopener">参考：新浪财经</a>
           </article>
@@ -867,6 +944,7 @@
               <ul>
                 <li>自定义技能文件放入指定目录，为 CLI 增加定制 Agent 能力；Agent 从云端渗透本地开发链。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>谷歌的命令行 AI 工具支持「自定义技能」：开发者把技能文件放到指定目录，就能让 AI 在本地执行更多定制任务。</p>
             </div>
             <a class="card-link" href="https://www.80aj.com/2026/01/15/gemini-cli-agent-custom-skills/" target="_blank" rel="noopener">参考：80aj</a>
           </article>
@@ -883,6 +961,7 @@
                 <li>智能报销：自然语言 + 拍照填单，流程约 10 天 → 约 2 小时。</li>
                 <li>AI 智审：风险识别约 90%、人工审核量降约 90%；费用数字孪生 11 维分析；美宜佳等已落地。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>说话/拍照就能填报销单，AI 自动审发票和规则，风险大部分被机器拦住；系统还能用费用数据做多维度分析，连锁零售已在使用。</p>
             </div>
             <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
           </article>
@@ -893,6 +972,7 @@
               <ul>
                 <li>月均约 8 万张票据；审核周期 3 天 → 约 4 小时；全年拦截异常千笔级；制度库 RAG + 人审/机审/质检闭环。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>央企财务共享中心用大模型+OCR 审票据：每月 8 万张，审核从 3 天缩到几小时，全年拦住上千笔异常；AI 先按制度库查规则再审，人机分工明确。</p>
             </div>
             <p class="card-body" style="margin-bottom:0;">来源：行业实践与云厂商案例综合</p>
           </article>
@@ -903,6 +983,7 @@
               <ul>
                 <li>整合税务、工商、司法及行内数据；判别式模型算逾期概率，生成式 AI 输出综合风险评估报告；纳入央行创新监管试点。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>湖州银行用 AI 做企业贷款风控：先算「会不会逾期」的概率，再让 AI 生成一份综合风险报告；数据来自税务、工商、司法等，已入选央行金融科技创新监管试点。</p>
             </div>
             <a class="card-link" href="https://huhehaote.pbc.gov.cn/hangzhou/125248/5877438/2025102316223368185.pdf" target="_blank" rel="noopener">参考：央行金融科技创新应用声明书（PDF）</a>
           </article>
@@ -921,6 +1002,7 @@
                 <li>AI 数据湖库（Lakebase）：湖库一体，结构化/半结构化/非结构化全模态统一管理；模型算子化、向量+全文检索深度集成。</li>
                 <li>已服务超 2 万用户、部署超 300 万核；金融、汽车、政务等核心业务落地。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里云数据库「自带 AI」：在库里就能用 SQL 调大模型，数据不用搬出去，既快又安全；还能把表格、文档、图片等统一存和查，已用在金融、政务等。</p>
             </div>
             <a class="card-link" href="https://www.donews.com/news/detail/4/6384197.html" target="_blank" rel="noopener">参考：DoNews</a>
           </article>
@@ -933,6 +1015,7 @@
                 <li>智能值守：实时负载监控、自动告警与故障定位；数据洞察与血缘分析、归因与趋势预测。</li>
                 <li>依托自研大模型与全域上下文；通过信通院评测，应用于腾讯会议等内部产品。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>腾讯云给数据库配上「AI 运维」：上线前预测 SQL 风险、仿真验证；上线后实时监控、自动告警和定位问题，还能做数据血缘和趋势分析。</p>
             </div>
             <a class="card-link" href="https://cloud.tencent.com/product/tdai" target="_blank" rel="noopener">参考：腾讯云 TDAI</a>
           </article>
@@ -944,6 +1027,7 @@
                 <li>GaussDB-AI：AI 智能索引，分析复杂 SQL 场景并推荐最优索引方案；参数自调优，自动化运维与常见问题自动处理。</li>
                 <li>基于 OpenGauss 开源，优化 SQL 执行性能；适用于超大规模数据（10TB+）与分布式并行查询。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>华为云数据库用 AI 自动选「怎么建索引、怎么调参数」最合适，减少人工调优；适合超大数据量和分布式查询场景。</p>
             </div>
             <a class="card-link" href="https://bbs.huaweicloud.cn/blogs/457957" target="_blank" rel="noopener">参考：华为云开发者</a>
           </article>
@@ -955,6 +1039,7 @@
                 <li>千帆大模型平台涵盖模型服务、应用开发；数据库管理支持大模型的数据管理与应用集成。</li>
                 <li>与云数据库、分析型数据库等 PaaS 协同，支撑 RAG、知识库、ChatBI 等 AI 场景。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>百度千帆既提供大模型服务，也管数据：企业可以把数据放在云上，和 AI「先查资料再回答」、知识库、智能报表等场景一起用。</p>
             </div>
             <a class="card-link" href="https://cloud.baidu.com/doc/qianfan/s/Nmh4su4pd" target="_blank" rel="noopener">参考：百度智能云千帆</a>
           </article>
@@ -967,6 +1052,7 @@
                 <li>Bedrock 知识库可直接选用 Aurora PostgreSQL 作为向量存储，端到端 RAG（摄取、向量化、存储、检索）无需自写代码。</li>
                 <li>pgvector HNSW 索引；Aurora 优化读取使向量搜索性能提升约 9 倍；Aurora ML 扩展支持 SQL 调用 Bedrock 生成嵌入。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>AWS 的数据库可直接当 AI 知识库用：存企业文档、按意思检索、配合大模型「先查再答」，一条龙完成，不用自己写检索代码。</p>
             </div>
             <a class="card-link" href="https://docs.amazonaws.cn/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.VectorDB.html" target="_blank" rel="noopener">参考：AWS Aurora 向量库</a>
           </article>
@@ -978,6 +1064,7 @@
                 <li>Cosmos DB：矢量搜索 + 语义内核、LangChain、LlamaIndex、CosmosAIGraph；与 Azure OpenAI 嵌入模型配合。</li>
                 <li>Azure Database for PostgreSQL 通过 azure_ai 扩展调用 Azure OpenAI，支撑生成式 AI 应用；Cosmos DB for MongoDB vCore 支持向量搜索。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>微软云数据库与 OpenAI 深度打通：支持按意思检索、和常见 AI 开发框架对接；PostgreSQL 也能在库里直接调 AI，做生成式应用。</p>
             </div>
             <a class="card-link" href="https://learn.microsoft.com/zh-cn/azure/cosmos-db/gen-ai/integrations" target="_blank" rel="noopener">参考：Azure Cosmos DB AI 集成</a>
           </article>
@@ -989,6 +1076,7 @@
                 <li>Vertex AI 提供与 OpenAI 库兼容的聊天完成 API，支持 Gemini 系列等模型，便于在 OpenAI 与 GCP 间迁移。</li>
                 <li>与 BigQuery、Cloud SQL 等数据服务协同，支撑企业数据与 AI 工作流一体化。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>谷歌云 AI 平台接口和 OpenAI 兼容，原来用 OpenAI 的应用可以较容易迁到谷歌云、用 Gemini 等；并与谷歌的大数据、数据库服务一起用。</p>
             </div>
             <a class="card-link" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/migrate/openai/overview?hl=zh-cn" target="_blank" rel="noopener">参考：Vertex AI OpenAI 迁移</a>
           </article>
@@ -1001,6 +1089,7 @@
                 <li>集成 DeepSeek、Qwen 等国产大模型，智能参数调优、Text2SQL；TPC-C 性能较人工调优提升约 4.53%，部分场景提升约 23 倍。</li>
                 <li>自研向量库、图库、时序库；启云数据库（AI 版）、一体机 PAI-A（AI 版）等交付形态。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>达梦用国产大模型给数据库做「AI 助手」：自动调参数、用自然语言转成查库语句；在标准性能测试里比人工调优还有提升，并有向量/图等专用库。</p>
             </div>
             <a class="card-link" href="https://www.dameng.com/product/DMAIDP.html" target="_blank" rel="noopener">参考：达梦启智 AI 数据平台</a>
           </article>
@@ -1012,6 +1101,7 @@
                 <li>Atlas Vector Search 支持语义检索与生成式 AI 应用；向量量化能力正式可用，降低存储与成本。</li>
                 <li>集成 LangChain、LlamaIndex、Semantic Kernel、Voyage AI 嵌入与重排；可作为 Bedrock 等知识库的向量存储。</li>
               </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>MongoDB 云版支持「按意思检索」和生成式 AI：可当 AWS 等平台的知识库存储，并与常见 AI 开发框架对接；新出的量化能力能省存储和成本。</p>
             </div>
             <a class="card-link" href="https://www.mongodb.com/docs/atlas/atlas-vector-search/ai-integrations/" target="_blank" rel="noopener">参考：MongoDB Atlas AI 集成</a>
           </article>
@@ -1026,6 +1116,27 @@
           <h1>第 3 期</h1>
           <p class="sub">本期内容将于 2026 年 2 月中旬更新。</p>
           <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
+          <div class="glossary">
+            <span class="glossary-title">💡 阅读说明</span>
+            <p style="margin:0 0 8px;">为方便不熟悉技术名词的读者，简报中部分内容附有<strong>「通俗说」</strong>白话解读；下方<strong>「术语简表」</strong>可随时查阅。</p>
+            <details class="glossary-details">
+              <summary class="glossary-title">术语简表（点击展开）</summary>
+              <dl style="margin:8px 0 0;">
+                <dt>大模型 / 大语言模型</dt><dd>能理解与生成文字的 AI，参数规模越大通常能力越强。</dd>
+                <dt>开源</dt><dd>代码或模型公开，开发者可免费使用、二次开发。</dd>
+                <dt>Agent / 智能体</dt><dd>能按步骤执行任务的 AI，不只聊天，还能操作软件、查数据、发邮件等。</dd>
+                <dt>端侧 / 端云一体</dt><dd>在手机、电脑本地跑一部分 AI，再结合云端，兼顾速度与隐私。</dd>
+                <dt>RAG</dt><dd>检索增强生成：先查企业资料/知识库再回答，减少 AI「瞎编」。</dd>
+                <dt>IaaS / PaaS</dt><dd>云计算形态：IaaS 约等于租服务器，PaaS 约等于租平台能力（如数据库、AI 接口）。</dd>
+                <dt>向量检索 / 语义检索</dt><dd>按「意思」找相似内容，而不是只按关键词匹配。</dd>
+                <dt>基准 / 评测</dt><dd>用统一题目给不同 AI 打分，便于横向对比。</dd>
+                <dt>HLE / 综合能力评测</dt><dd>一种综合考察 AI 多维度能力的分数，分数越高表示整体能力越强。</dd>
+                <dt>库内推理</dt><dd>在数据库内部直接调用 AI 计算，数据不用导出，更快、更安全。</dd>
+                <dt>OCR</dt><dd>把图片里的文字识别成可编辑文本的技术。</dd>
+                <dt>数字孪生</dt><dd>用系统里的数据「复制」真实业务，便于做分析和预测。</dd>
+              </dl>
+            </details>
+          </div>
         </header>
         <nav class="nav-inline">
           <a href="#p3-m1">头部产品动态</a>
