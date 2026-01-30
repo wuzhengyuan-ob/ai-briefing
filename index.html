@@ -475,10 +475,10 @@
       <div class="sidebar-label">历史简报</div>
       <ul class="sidebar-list">
         <li>
-          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date">01.15 ～ 01.29</span></button>
+          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date"> 01.15 ～ 01.29</span></button>
         </li>
         <li>
-          <button type="button" data-issue="2">第 2 期<span class="issue-date">02.01 ～ 02.14</span></button>
+          <button type="button" data-issue="2">第 2 期<span class="issue-date"> 02.01 ～ 02.14</span></button>
         </li>
       </ul>
     </aside>
@@ -496,6 +496,7 @@
           <a href="#m1">一、头部产品动态</a>
           <a href="#m2">二、新兴产品与创新</a>
           <a href="#m3">三、财务 AI 最佳实践</a>
+          <a href="#m4">四、云底座与 AI 融合</a>
         </nav>
 
         <section id="m1" class="section">
@@ -665,6 +666,115 @@
           </article>
         </section>
 
+        <section id="m4" class="section">
+          <h2 class="section-title">四、云底座与 AI 融合</h2>
+          <p class="section-desc">全球公有云厂商将 IaaS、PaaS、数据库与 AI 场景融合的案例。覆盖阿里云、华为云、腾讯云、百度云、AWS、GCP、Azure 及垂类数据库品牌。</p>
+          <div class="sub-head">国内云厂商</div>
+          <article class="card">
+            <span class="card-tag">阿里云 · PolarDB</span>
+            <h3 class="card-title">阿里云 PolarDB：AI 原生数据库与 Lakebase 湖库一体</h3>
+            <div class="card-body">
+              <ul>
+                <li>PolarDB for AI：内置通义千问/DeepSeek，SQL 直调 AI，库内推理、数据不出域；在线推理吞吐提升 10 倍+。</li>
+                <li>AI 数据湖库（Lakebase）：湖库一体，结构化/半结构化/非结构化全模态统一管理；模型算子化、向量+全文检索深度集成。</li>
+                <li>已服务超 2 万用户、部署超 300 万核；金融、汽车、政务等核心业务落地。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.donews.com/news/detail/4/6384197.html" target="_blank" rel="noopener">参考：DoNews</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">腾讯云 · TDAI</span>
+            <h3 class="card-title">腾讯云数据库 AI 服务（TDAI）：智能治理与运维</h3>
+            <div class="card-body">
+              <ul>
+                <li>事前治理：ORM 扫描、SQL 风险预测（全表扫描、索引失效）；仿真验证、流量回放沙盒。</li>
+                <li>智能值守：实时负载监控、自动告警与故障定位；数据洞察与血缘分析、归因与趋势预测。</li>
+                <li>依托自研大模型与全域上下文；通过信通院评测，应用于腾讯会议等内部产品。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://cloud.tencent.com/product/tdai" target="_blank" rel="noopener">参考：腾讯云 TDAI</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">华为云 · GaussDB</span>
+            <h3 class="card-title">华为云 GaussDB：AI 智能索引与参数自调优</h3>
+            <div class="card-body">
+              <ul>
+                <li>GaussDB-AI：AI 智能索引，分析复杂 SQL 场景并推荐最优索引方案；参数自调优，自动化运维与常见问题自动处理。</li>
+                <li>基于 OpenGauss 开源，优化 SQL 执行性能；适用于超大规模数据（10TB+）与分布式并行查询。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://bbs.huaweicloud.cn/blogs/457957" target="_blank" rel="noopener">参考：华为云开发者</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">百度智能云</span>
+            <h3 class="card-title">百度智能云千帆：大模型平台与数据库应用集成</h3>
+            <div class="card-body">
+              <ul>
+                <li>千帆大模型平台涵盖模型服务、应用开发；数据库管理支持大模型的数据管理与应用集成。</li>
+                <li>与云数据库、分析型数据库等 PaaS 协同，支撑 RAG、知识库、ChatBI 等 AI 场景。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://cloud.baidu.com/doc/qianfan/s/Nmh4su4pd" target="_blank" rel="noopener">参考：百度智能云千帆</a>
+          </article>
+          <div class="sub-head">国际云厂商</div>
+          <article class="card">
+            <span class="card-tag">AWS · Aurora + Bedrock</span>
+            <h3 class="card-title">AWS Aurora 与 Bedrock 知识库：RAG 与向量检索</h3>
+            <div class="card-body">
+              <ul>
+                <li>Bedrock 知识库可直接选用 Aurora PostgreSQL 作为向量存储，端到端 RAG（摄取、向量化、存储、检索）无需自写代码。</li>
+                <li>pgvector HNSW 索引；Aurora 优化读取使向量搜索性能提升约 9 倍；Aurora ML 扩展支持 SQL 调用 Bedrock 生成嵌入。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://docs.amazonaws.cn/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.VectorDB.html" target="_blank" rel="noopener">参考：AWS Aurora 向量库</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">Azure · Cosmos DB / PostgreSQL</span>
+            <h3 class="card-title">Azure Cosmos DB 与 PostgreSQL：与 OpenAI 深度集成</h3>
+            <div class="card-body">
+              <ul>
+                <li>Cosmos DB：矢量搜索 + 语义内核、LangChain、LlamaIndex、CosmosAIGraph；与 Azure OpenAI 嵌入模型配合。</li>
+                <li>Azure Database for PostgreSQL 通过 azure_ai 扩展调用 Azure OpenAI，支撑生成式 AI 应用；Cosmos DB for MongoDB vCore 支持向量搜索。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://learn.microsoft.com/zh-cn/azure/cosmos-db/gen-ai/integrations" target="_blank" rel="noopener">参考：Azure Cosmos DB AI 集成</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">GCP · Vertex AI</span>
+            <h3 class="card-title">GCP Vertex AI：与 OpenAI 兼容 API 及数据库生态</h3>
+            <div class="card-body">
+              <ul>
+                <li>Vertex AI 提供与 OpenAI 库兼容的聊天完成 API，支持 Gemini 系列等模型，便于在 OpenAI 与 GCP 间迁移。</li>
+                <li>与 BigQuery、Cloud SQL 等数据服务协同，支撑企业数据与 AI 工作流一体化。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/migrate/openai/overview?hl=zh-cn" target="_blank" rel="noopener">参考：Vertex AI OpenAI 迁移</a>
+          </article>
+          <div class="sub-head">垂类数据库品牌</div>
+          <article class="card">
+            <span class="card-tag">达梦 · 启智 AI 数据平台</span>
+            <h3 class="card-title">达梦启智 AI 数据平台（DMQZAIDP）：AI for DB</h3>
+            <div class="card-body">
+              <ul>
+                <li>集成 DeepSeek、Qwen 等国产大模型，智能参数调优、Text2SQL；TPC-C 性能较人工调优提升约 4.53%，部分场景提升约 23 倍。</li>
+                <li>自研向量库、图库、时序库；启云数据库（AI 版）、一体机 PAI-A（AI 版）等交付形态。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.dameng.com/product/DMAIDP.html" target="_blank" rel="noopener">参考：达梦启智 AI 数据平台</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">MongoDB · Atlas</span>
+            <h3 class="card-title">MongoDB Atlas Vector Search：语义检索与 RAG</h3>
+            <div class="card-body">
+              <ul>
+                <li>Atlas Vector Search 支持语义检索与生成式 AI 应用；向量量化能力正式可用，降低存储与成本。</li>
+                <li>集成 LangChain、LlamaIndex、Semantic Kernel、Voyage AI 嵌入与重排；可作为 Bedrock 等知识库的向量存储。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.mongodb.com/docs/atlas/atlas-vector-search/ai-integrations/" target="_blank" rel="noopener">参考：MongoDB Atlas AI 集成</a>
+          </article>
+        </section>
+
         <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
       </div>
 
@@ -696,6 +806,13 @@
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
+        <section class="section">
+          <h2 class="section-title">四、云底座与 AI 融合</h2>
+          <div class="placeholder-section">
+            <div class="icon">📋</div>
+            <p>敬请期待 · 双周更新后在此展示</p>
+          </div>
+        </section>
         <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
       </div>
       </div>
@@ -717,6 +834,8 @@
               <li>扣子 2.0 上线技能商店与 Agent Plan</li>
               <li>京东健康发布医生端 AI「知医」</li>
               <li>湖州银行生成式 AI 风控入选央行创新应用</li>
+              <li>阿里云 PolarDB AI 原生能力发布，Lakebase 湖库一体</li>
+              <li>AWS Aurora 与 Bedrock 知识库集成，RAG 与向量检索规模化</li>
             </ul>
           </li>
           <li class="timeline-item">
