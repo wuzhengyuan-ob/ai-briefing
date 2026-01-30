@@ -6,15 +6,20 @@
   <title>AI 行业双周资讯简报</title>
   <style>
     :root {
-      --bg: #f1f5f9;
+      --bg: #f8fafc;
+      --bg-subtle: #f1f5f9;
       --card-bg: #ffffff;
       --text: #334155;
       --text-soft: #64748b;
       --accent: #0ea5e9;
+      --accent-purple: #6366f1;
       --accent-soft: #e0f2fe;
       --border: #e2e8f0;
       --tag-bg: #f1f5f9;
       --tag-text: #475569;
+      --sidebar-width: 220px;
+      --glass: rgba(255,255,255,0.72);
+      --glass-border: rgba(226,232,240,0.8);
     }
 
     * { box-sizing: border-box; }
@@ -24,6 +29,11 @@
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
       background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14,165,233,0.06), transparent),
+        linear-gradient(180deg, #fafbff 0%, #f1f5f9 100%);
+      min-height: 100vh;
       color: var(--text);
       line-height: 1.75;
       font-size: 15px;
@@ -35,90 +45,216 @@
     }
     a:hover { text-decoration: underline; }
 
-    .page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 24px 56px;
+    .app {
+      display: flex;
+      min-height: 100vh;
     }
 
-    /* 标题区 */
-    header {
-      margin-bottom: 40px;
-      padding-bottom: 28px;
+    /* ========== 左侧栏 ========== */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-right: 1px solid var(--glass-border);
+      padding: 24px 16px 32px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
       border-bottom: 1px solid var(--border);
     }
-    .hero-title {
+    .sidebar-brand .logo {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin: 0 0 4px;
+    }
+    .sidebar-brand .logo span {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sidebar-brand .sub {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    .sidebar-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+    .sidebar-current {
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(14,165,233,0.06));
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+    }
+    .sidebar-current-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .sidebar-current .issue-date {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+    .sidebar-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar-list li { margin-bottom: 4px; }
+    .sidebar-list a,
+    .sidebar-list button {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
+    }
+    .sidebar-list a:hover,
+    .sidebar-list button:hover {
+      background: var(--bg-subtle);
+      color: #0f172a;
+      text-decoration: none;
+    }
+    .sidebar-list a.active,
+    .sidebar-list button.active {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(14,165,233,0.1));
+      color: #0f172a;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .sidebar-list .issue-date {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    /* ========== 主内容区 ========== */
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 32px 40px 56px;
+    }
+    .issue-panel {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+    .issue-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .issue-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .issue-header h1 {
       margin: 0 0 8px;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       color: #0f172a;
       letter-spacing: -0.02em;
     }
-    .hero-sub {
+    .issue-header .sub {
       font-size: 14px;
       color: var(--text-soft);
-      margin-bottom: 16px;
-      line-height: 1.7;
+      line-height: 1.6;
     }
-    .hero-meta {
+    .issue-header .meta {
       font-size: 13px;
       color: var(--text-soft);
+      margin-top: 8px;
     }
 
-    /* 导航 */
-    nav {
+    .nav-inline {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 32px;
+      gap: 8px;
+      margin-bottom: 28px;
     }
-    nav a {
-      display: inline-block;
+    .nav-inline a {
       padding: 8px 14px;
       font-size: 13px;
       background: var(--card-bg);
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
-    nav a:hover {
+    .nav-inline a:hover {
       background: var(--accent-soft);
-      color: var(--accent);
       border-color: var(--accent);
+      color: var(--accent);
       text-decoration: none;
     }
 
-    /* 模块 */
+    /* 模块卡片：玻璃感 + 微动效 */
     .section {
-      margin-bottom: 40px;
-      padding: 28px 24px;
+      margin-bottom: 28px;
+      padding: 24px 26px;
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .section:hover {
+      box-shadow: 0 4px 14px rgba(99,102,241,0.08), 0 2px 6px rgba(0,0,0,0.04);
     }
     .section-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: #0f172a;
       margin: 0 0 6px;
       letter-spacing: -0.01em;
+      padding-left: 12px;
+      border-left: 3px solid transparent;
+      border-image: linear-gradient(180deg, var(--accent-purple), var(--accent)) 1;
     }
     .section-desc {
       font-size: 13px;
       color: var(--text-soft);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       line-height: 1.7;
+      padding-left: 15px;
     }
-
-    /* 卡片：精简、留白 */
     .card {
-      padding: 20px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--border);
       line-height: 1.75;
+      transition: padding-left 0.2s ease;
     }
+    .card:hover { padding-left: 4px; }
     .card:last-child { border-bottom: none; }
-
     .card-title {
       font-size: 15px;
       font-weight: 600;
@@ -135,9 +271,7 @@
       margin: 0 0 0 1.2em;
       padding: 0;
     }
-    .card-body li {
-      margin-bottom: 4px;
-    }
+    .card-body li { margin-bottom: 4px; }
     .card-body p { margin: 0 0 6px; }
     .card-body p:last-child { margin-bottom: 0; }
     .card-link {
@@ -147,22 +281,33 @@
     .card-tag {
       display: inline-block;
       font-size: 11px;
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 6px;
       background: var(--tag-bg);
       color: var(--tag-text);
       margin-bottom: 8px;
+      border: 1px solid var(--border);
     }
-
-    /* 国际 / 国内 小标题 */
     .sub-head {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-soft);
-      margin: 24px 0 12px;
+      margin: 22px 0 12px;
       padding-bottom: 6px;
     }
     .sub-head:first-child { margin-top: 0; }
+
+    .placeholder-section {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+    .placeholder-section .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
 
     footer {
       margin-top: 32px;
@@ -172,220 +317,285 @@
       color: var(--text-soft);
       text-align: center;
     }
+
+    /* 移动端：侧栏收起 */
+    @media (max-width: 768px) {
+      .app { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .sidebar-brand { margin-bottom: 16px; }
+      .sidebar-list { display: flex; flex-wrap: wrap; gap: 8px; }
+      .sidebar-list li { margin-bottom: 0; }
+      .main { padding: 24px 20px 48px; }
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <h1 class="hero-title">AI 行业双周资讯简报</h1>
-      <p class="hero-sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选，近两周公开报道。</p>
-      <p class="hero-meta">统计区间：2026-01-15 ～ 2026-01-29</p>
-    </header>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">AI 双周<span>简报</span></div>
+        <div class="sub">每双周更新 · 国内外 AI 动态</div>
+      </div>
+      <div class="sidebar-label">当前期</div>
+      <div class="sidebar-current">
+        <span class="sidebar-current-title">第 1 期</span>
+        <span class="issue-date">01.15 ～ 01.29</span>
+      </div>
+      <div class="sidebar-label">历史简报</div>
+      <ul class="sidebar-list">
+        <li>
+          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date">01.15 ～ 01.29</span></button>
+        </li>
+        <li>
+          <button type="button" data-issue="2">第 2 期<span class="issue-date">02.01 ～ 02.14</span></button>
+        </li>
+      </ul>
+    </aside>
 
-    <nav>
-      <a href="#m1">一、头部产品动态</a>
-      <a href="#m2">二、新兴产品与创新</a>
-      <a href="#m3">三、财务 AI 最佳实践</a>
-    </nav>
+    <main class="main">
+      <!-- 第 1 期 -->
+      <div id="issue-1" class="issue-panel active">
+        <header class="issue-header">
+          <h1>第 1 期</h1>
+          <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
+          <p class="meta">统计区间：2026-01-15 ～ 2026-01-29</p>
+        </header>
+        <nav class="nav-inline">
+          <a href="#m1">一、头部产品动态</a>
+          <a href="#m2">二、新兴产品与创新</a>
+          <a href="#m3">三、财务 AI 最佳实践</a>
+        </nav>
 
-    <!-- 模块一：国内外头部产品 -->
-    <section id="m1" class="section">
-      <h2 class="section-title">一、国内外行业重量级产品动态</h2>
-      <p class="section-desc">Qwen、文心、豆包、千问生态；Gemini、Claude、GPT 等国际产品版本与战略。各条仅保留核心要点 + 1 个参考链接。</p>
+        <section id="m1" class="section">
+          <h2 class="section-title">一、国内外行业重量级产品动态</h2>
+          <p class="section-desc">Qwen、文心、千问、扣子；Gemini、Claude、GPT 等。核心要点 + 1 个参考链接。</p>
+          <div class="sub-head">国内</div>
+          <article class="card">
+            <span class="card-tag">Qwen · 推理</span>
+            <h3 class="card-title">阿里发布 Qwen3-Max-Thinking，HLE 超 GPT-5.2 / Gemini 3 Pro</h3>
+            <div class="card-body">
+              <ul>
+                <li>万亿参数、36T tokens 预训练；19 项基准刷新纪录。</li>
+                <li>Test-time Scaling：经验提取 + 多轮自迭代，HLE 58.3 分。</li>
+                <li>原生 Agent；Qwen 衍生模型破 20 万、下载破 10 亿。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://finance.sina.com.cn/stock/t/2026-01-27/doc-inhiseyq0303608.shtml" target="_blank" rel="noopener">参考：新浪财经</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">千问 · 生态</span>
+            <h3 class="card-title">千问 App 接入阿里全生态，400+ 办事功能</h3>
+            <div class="card-body">
+              <ul>
+                <li>打通淘宝、飞猪、高德、支付宝等，一句话完成订票、购物、政务查询。</li>
+                <li>从「聊天」升级「办事」；平头哥计划独立上市。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://new.qq.com/rain/a/20260115A03C2L00" target="_blank" rel="noopener">参考：腾讯新闻</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">文心 · 全模态</span>
+            <h3 class="card-title">百度发布文心大模型 5.0：2.4 万亿参数原生全模态</h3>
+            <div class="card-body">
+              <ul>
+                <li>统一自回归架构，多模态联合训练；40+ 基准超 Gemini-2.5-Pro、GPT-5-High。</li>
+                <li>千帆 130 万+ Agents；5 分钟超越真人直播、实时数字人等。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.cnr.cn/shanghai/kcxtd/20260123/t20260123_527503441.shtml" target="_blank" rel="noopener">参考：央广网</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">扣子 · Agent</span>
+            <h3 class="card-title">字节扣子 2.0：Agent Skills + 技能商店、Agent Plan</h3>
+            <div class="card-body">
+              <ul>
+                <li>Skills 封装工作流与最佳实践，技能商店支持上传/分发。</li>
+                <li>Plan 支持长期目标拆解与周期执行。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
+          </article>
+          <div class="sub-head">国际</div>
+          <article class="card">
+            <span class="card-tag">Gemini</span>
+            <h3 class="card-title">Google：Gemini 3 升级 AI Overviews，Chrome 内嵌「自动浏览」</h3>
+            <div class="card-body">
+              <ul>
+                <li>AI Overviews 默认切 Gemini 3；从概览一键进入 AI Mode 对话。</li>
+                <li>Chrome 侧边栏集成 Gemini 3，Pro/Ultra 可体验自动点击、输入、滚动（美国先行）。</li>
+                <li>Personal Intelligence 连接 Gmail/Photos/YouTube/Search，美国内测。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://9to5google.com/2026/01/27/gemini-3-ai-overviews/" target="_blank" rel="noopener">参考：9to5Google</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">Claude</span>
+            <h3 class="card-title">Claude 接入 Slack、Figma、Canva 等，企业工作流深度整合</h3>
+            <div class="card-body">
+              <ul>
+                <li>聊天内直接打开并操作 Asana、Slack、Figma、Canva、Box、Hex、monday.com 等，基于 MCP Apps。</li>
+                <li>API Structured outputs 正式可用；Opus 3 已停用，建议升级 Opus 4.5。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.infoworld.com/article/4122745/anthropic-integrates-third-party-apps-into-claude-reshaping-enterprise-ai-workflows-2.html" target="_blank" rel="noopener">参考：InfoWorld</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">GPT-5.2</span>
+            <h3 class="card-title">OpenAI GPT-5.2：Thinking / Instant / Pro，基准领先 Claude / Gemini</h3>
+            <div class="card-body">
+              <ul>
+                <li>Thinking 推理；Instant 日常；Pro 复杂与科研。AIME 2025 满分、SWE-Bench Pro 55.6% 等。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://getgpt.pro/blog/gpt-5.2-release-announcement" target="_blank" rel="noopener">参考：GPT-5.2 发布说明</a>
+          </article>
+        </section>
 
-      <div class="sub-head">国内</div>
+        <section id="m2" class="section">
+          <h2 class="section-title">二、新涌现品牌与产品创新</h2>
+          <p class="section-desc">国内外新产品或重大形态/商业模式创新。</p>
+          <article class="card">
+            <span class="card-tag">国际 · 个人助手</span>
+            <h3 class="card-title">Clawdbot（已更名 Moltbot）：开源个人 AI 助手，集成 Claude</h3>
+            <div class="card-body">
+              <ul>
+                <li>「带手的 Claude」：聊天 + 运行命令、处理文件、发邮件等本地任务。</li>
+                <li>WhatsApp、Telegram、Discord、Slack、iMessage 等；565+ 社区技能；3 万+ GitHub Stars，MIT 开源。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot" target="_blank" rel="noopener">参考：TechCrunch</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国内 · 技能生态</span>
+            <h3 class="card-title">扣子 2.0 技能商店：职业经验「代码化」流转</h3>
+            <div class="card-body">
+              <ul>
+                <li>Skills 封装营销、合规、投放等流程；技能商店支持上传/下载，为 B2B/B2D 技能市场铺路。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国内 · 垂直场景</span>
+            <h3 class="card-title">京东健康「知医」：医生端循证医学 AI</h3>
+            <div class="card-body">
+              <ul>
+                <li>千万级文献与指南，临床决策 + 科研输出；集成京东医生 App，对全体医生免费。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://finance.sina.cn/2026-01-17/detail-inhhrczv9740897.d.html?vt=4" target="_blank" rel="noopener">参考：新浪财经</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国际 · 开发工具</span>
+            <h3 class="card-title">Gemini CLI 0.24.0：支持 Agent 自定义技能</h3>
+            <div class="card-body">
+              <ul>
+                <li>自定义技能文件放入指定目录，为 CLI 增加定制 Agent 能力；Agent 从云端渗透本地开发链。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.80aj.com/2026/01/15/gemini-cli-agent-custom-skills/" target="_blank" rel="noopener">参考：80aj</a>
+          </article>
+        </section>
 
-      <article class="card">
-        <span class="card-tag">Qwen · 推理</span>
-        <h3 class="card-title">阿里发布 Qwen3-Max-Thinking，HLE 超 GPT-5.2 / Gemini 3 Pro</h3>
-        <div class="card-body">
-          <ul>
-            <li>万亿参数、36T tokens 预训练；19 项基准刷新纪录。</li>
-            <li>Test-time Scaling：经验提取 + 多轮自迭代，HLE 58.3 分。</li>
-            <li>原生 Agent：自主调用搜索、记忆、代码解释器；Qwen 衍生模型破 20 万、下载破 10 亿。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://finance.sina.com.cn/stock/t/2026-01-27/doc-inhiseyq0303608.shtml" target="_blank" rel="noopener">参考：新浪财经</a>
-      </article>
+        <section id="m3" class="section">
+          <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
+          <p class="section-desc">TMT、500 强、金融机构及监管试点案例。</p>
+          <article class="card">
+            <span class="card-tag">TMT · 连锁零售</span>
+            <h3 class="card-title">中兴新云 × 腾讯云：报销 10 天 → 2 小时，AI 智审减 90% 人工</h3>
+            <div class="card-body">
+              <ul>
+                <li>智能报销：自然语言 + 拍照填单，流程约 10 天 → 约 2 小时。</li>
+                <li>AI 智审：风险识别约 90%、人工审核量降约 90%；费用数字孪生 11 维分析；美宜佳等已落地。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">央企 · 共享中心</span>
+            <h3 class="card-title">某央企财务共享：大模型 + OCR 票据审核，人工量降约 75%</h3>
+            <div class="card-body">
+              <ul>
+                <li>月均约 8 万张票据；审核周期 3 天 → 约 4 小时；全年拦截异常千笔级；制度库 RAG + 人审/机审/质检闭环。</li>
+              </ul>
+            </div>
+            <p class="card-body" style="margin-bottom:0;">来源：行业实践与云厂商案例综合</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">银行 · 监管试点</span>
+            <h3 class="card-title">湖州银行：生成式 AI 企业贷款风控，入选央行金融科技创新应用</h3>
+            <div class="card-body">
+              <ul>
+                <li>整合税务、工商、司法及行内数据；判别式模型算逾期概率，生成式 AI 输出综合风险评估报告；纳入央行创新监管试点。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://huhehaote.pbc.gov.cn/hangzhou/125248/5877438/2025102316223368185.pdf" target="_blank" rel="noopener">参考：央行金融科技创新应用声明书（PDF）</a>
+          </article>
+        </section>
 
-      <article class="card">
-        <span class="card-tag">千问 · 生态</span>
-        <h3 class="card-title">千问 App 接入阿里全生态，400+ 办事功能</h3>
-        <div class="card-body">
-          <ul>
-            <li>打通淘宝、飞猪、高德、支付宝等，一句话完成订票、购物、政务查询。</li>
-            <li>从「聊天」升级「办事」；平头哥计划独立上市，全栈布局芯片—模型—应用。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://new.qq.com/rain/a/20260115A03C2L00" target="_blank" rel="noopener">参考：腾讯新闻</a>
-      </article>
+        <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
+      </div>
 
-      <article class="card">
-        <span class="card-tag">文心 · 全模态</span>
-        <h3 class="card-title">百度发布文心大模型 5.0：2.4 万亿参数原生全模态</h3>
-        <div class="card-body">
-          <ul>
-            <li>统一自回归架构，文本/图像/音频/视频联合训练；40+ 基准超 Gemini-2.5-Pro、GPT-5-High。</li>
-            <li>千帆平台 130 万+ Agents；5 分钟超越真人直播、实时数字人等应用。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://www.cnr.cn/shanghai/kcxtd/20260123/t20260123_527503441.shtml" target="_blank" rel="noopener">参考：央广网</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">扣子 · Agent</span>
-        <h3 class="card-title">字节扣子 2.0：Agent Skills + 技能商店、Agent Plan</h3>
-        <div class="card-body">
-          <ul>
-            <li>Skills 封装工作流与最佳实践，技能商店支持上传/分发。</li>
-            <li>Plan 支持长期目标拆解与周期执行，从「一问一答」到「目标驱动」。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
-      </article>
-
-      <div class="sub-head">国际</div>
-
-      <article class="card">
-        <span class="card-tag">Gemini</span>
-        <h3 class="card-title">Google：Gemini 3 升级 AI Overviews，Chrome 内嵌「自动浏览」</h3>
-        <div class="card-body">
-          <ul>
-            <li>AI Overviews 默认切 Gemini 3；支持从概览一键进入 AI Mode 对话。</li>
-            <li>Chrome 侧边栏集成 Gemini 3，Pro/Ultra 用户可体验自动点击、输入、滚动（美国先行）。</li>
-            <li>Personal Intelligence 连接 Gmail/Photos/YouTube/Search，美国 Pro/Ultra 内测。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://9to5google.com/2026/01/27/gemini-3-ai-overviews/" target="_blank" rel="noopener">参考：9to5Google</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">Claude</span>
-        <h3 class="card-title">Claude 接入 Slack、Figma、Canva 等，企业工作流深度整合</h3>
-        <div class="card-body">
-          <ul>
-            <li>聊天内直接打开并操作 Asana、Slack、Figma、Canva、Box、Hex、monday.com 等，基于 MCP Apps。</li>
-            <li>API：Structured outputs 正式可用（Sonnet/Opus/Haiku 4.5）；Console 迁至 platform.claude.com。</li>
-            <li>Opus 3 已停用，建议升级 Opus 4.5（能力提升、成本约降三分之一）。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://www.infoworld.com/article/4122745/anthropic-integrates-third-party-apps-into-claude-reshaping-enterprise-ai-workflows-2.html" target="_blank" rel="noopener">参考：InfoWorld</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">GPT-5.2</span>
-        <h3 class="card-title">OpenAI GPT-5.2：Thinking / Instant / Pro 三版本，基准领先 Claude Opus 4.5、Gemini 3 Pro</h3>
-        <div class="card-body">
-          <ul>
-            <li>Thinking 侧重推理；Instant 日常对话；Pro 复杂与科研场景。</li>
-            <li>公开基准：AIME 2025 满分、SWE-Bench Pro 55.6%、GDPval 70.9% 等。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://getgpt.pro/blog/gpt-5.2-release-announcement" target="_blank" rel="noopener">参考：GPT-5.2 发布说明</a>
-      </article>
-    </section>
-
-    <!-- 模块二：新兴产品（含国际 Clawdbot/Moltbot） -->
-    <section id="m2" class="section">
-      <h2 class="section-title">二、新涌现品牌与产品创新</h2>
-      <p class="section-desc">国内外新产品或重大形态/商业模式创新，按热度与代表性筛选。</p>
-
-      <article class="card">
-        <span class="card-tag">国际 · 个人助手</span>
-        <h3 class="card-title">Clawdbot（已更名 Moltbot）：开源个人 AI 助手，集成 Claude，多平台 + 本地执行</h3>
-        <div class="card-body">
-          <ul>
-            <li>「带手的 Claude」：聊天 + 运行命令、处理文件、发邮件等本地任务。</li>
-            <li>支持 WhatsApp、Telegram、Discord、Slack、iMessage 等；565+ 社区技能；持久化记忆、跨平台同步。</li>
-            <li>30,000+ GitHub Stars，MIT 开源；2026 年接入 Vercel AI Gateway。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot" target="_blank" rel="noopener">参考：TechCrunch</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">国内 · 技能生态</span>
-        <h3 class="card-title">扣子 2.0 技能商店：职业经验「代码化」流转</h3>
-        <div class="card-body">
-          <ul>
-            <li>Skills 封装营销、合规、投放等流程；技能商店支持上传/下载，形成可交易能力。</li>
-            <li>创新点：隐性经验 → 可组合模块，为 B2B/B2D 技能市场铺路。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://news.qq.com/rain/a/20260119A046N700" target="_blank" rel="noopener">参考：腾讯新闻</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">国内 · 垂直场景</span>
-        <h3 class="card-title">京东健康「知医」：医生端循证医学 AI</h3>
-        <div class="card-body">
-          <ul>
-            <li>千万级文献与指南，临床决策 + 科研输出；集成京东医生 App，对全体医生免费。</li>
-            <li>创新：面向专业端「智能外脑」，以免费换 B 端粘性与生态扩张。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://finance.sina.cn/2026-01-17/detail-inhhrczv9740897.d.html?vt=4" target="_blank" rel="noopener">参考：新浪财经</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">国际 · 开发工具</span>
-        <h3 class="card-title">Gemini CLI 0.24.0：支持 Agent 自定义技能</h3>
-        <div class="card-body">
-          <ul>
-            <li>设置中启用后，可将自定义技能文件放入指定目录，为 CLI 增加定制 Agent 能力。</li>
-            <li>Agent 能力从云端进一步渗透本地开发链。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://www.80aj.com/2026/01/15/gemini-cli-agent-custom-skills/" target="_blank" rel="noopener">参考：80aj</a>
-      </article>
-    </section>
-
-    <!-- 模块三：财务 AI 实践（保持精简） -->
-    <section id="m3" class="section">
-      <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
-      <p class="section-desc">TMT、500 强、金融机构及监管试点案例，要点提炼 + 1 个参考链接。</p>
-
-      <article class="card">
-        <span class="card-tag">TMT · 连锁零售</span>
-        <h3 class="card-title">中兴新云 × 腾讯云：报销 10 天 → 2 小时，AI 智审减 90% 人工</h3>
-        <div class="card-body">
-          <ul>
-            <li>智能报销：自然语言 + 拍照填单，流程从约 10 天压到约 2 小时。</li>
-            <li>AI 智审：多规则引擎 + 大模型，风险识别约 90%、人工审核量降约 90%。</li>
-            <li>费用数字孪生：11 维分析支撑预算与决策；美宜佳等已全流程落地。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">央企 · 共享中心</span>
-        <h3 class="card-title">某央企财务共享：大模型 + OCR 票据审核，人工量降约 75%</h3>
-        <div class="card-body">
-          <ul>
-            <li>月均约 8 万张票据；审核周期 3 天 → 约 4 小时；全年拦截异常千笔级、避免损失数百万级。</li>
-            <li>实践：制度库 RAG + 人审/机审/质检闭环，风险标签沉淀供风控与审计。</li>
-          </ul>
-        </div>
-        <p class="card-body" style="margin-bottom:0;">来源：行业实践与云厂商案例综合</p>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">银行 · 监管试点</span>
-        <h3 class="card-title">湖州银行：生成式 AI 企业贷款风控，入选央行金融科技创新应用</h3>
-        <div class="card-body">
-          <ul>
-            <li>整合税务、工商、司法及行内数据；判别式模型算逾期概率，生成式 AI 输出综合风险评估报告。</li>
-            <li>通过合规与安全评估，纳入央行创新监管试点；可作金融机构 AI 风控合规参考。</li>
-          </ul>
-        </div>
-        <a class="card-link" href="https://huhehaote.pbc.gov.cn/hangzhou/125248/5877438/2025102316223368185.pdf" target="_blank" rel="noopener">参考：央行金融科技创新应用声明书（PDF）</a>
-      </article>
-    </section>
-
-    <footer>
-      本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。
-    </footer>
+      <!-- 第 2 期：占位，后续更新时替换内容 -->
+      <div id="issue-2" class="issue-panel">
+        <header class="issue-header">
+          <h1>第 2 期</h1>
+          <p class="sub">本期内容将于 2026 年 2 月中旬更新。</p>
+          <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
+        </header>
+        <section class="section">
+          <h2 class="section-title">一、国内外行业重量级产品动态</h2>
+          <div class="placeholder-section">
+            <div class="icon">📋</div>
+            <p>敬请期待 · 双周更新后在此展示</p>
+          </div>
+        </section>
+        <section class="section">
+          <h2 class="section-title">二、新涌现品牌与产品创新</h2>
+          <div class="placeholder-section">
+            <div class="icon">📋</div>
+            <p>敬请期待 · 双周更新后在此展示</p>
+          </div>
+        </section>
+        <section class="section">
+          <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
+          <div class="placeholder-section">
+            <div class="icon">📋</div>
+            <p>敬请期待 · 双周更新后在此展示</p>
+          </div>
+        </section>
+        <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
+      </div>
+    </main>
   </div>
+
+  <script>
+    (function() {
+      var panels = document.querySelectorAll('.issue-panel');
+      var buttons = document.querySelectorAll('.sidebar-list button[data-issue]');
+
+      function setActive(issueId) {
+        panels.forEach(function(p) {
+          p.classList.toggle('active', p.id === 'issue-' + issueId);
+        });
+        buttons.forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-issue') === String(issueId));
+        });
+      }
+
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          setActive(this.getAttribute('data-issue'));
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
