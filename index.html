@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -249,24 +249,40 @@
       line-height: 1.6;
     }
     .timeline-events li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       padding-left: 0;
       list-style: none;
       position: relative;
-      padding-left: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
     }
     .timeline-events li::before {
-      content: '·';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
+      content: none;
     }
+    .timeline-module {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--text-soft);
+      min-width: 44px;
+    }
+    .timeline-module .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+    }
+    .timeline-module.m1 .timeline-dot { background: linear-gradient(135deg, var(--m1), #0284c7); }
+    .timeline-module.m2 .timeline-dot { background: linear-gradient(135deg, var(--m2), #6d28d9); }
+    .timeline-module.m3 .timeline-dot { background: linear-gradient(135deg, var(--m3), #047857); }
+    .timeline-module.m4 .timeline-dot { background: linear-gradient(135deg, var(--m4), #b45309); }
     .timeline-events .empty {
       color: var(--text-soft);
       font-style: normal;
     }
-    .timeline-events .empty::before { content: ''; }
+    .timeline-events .empty .timeline-module { display: none; }
     .issue-panel {
       display: none;
       animation: fadeIn 0.35s ease;
@@ -592,10 +608,10 @@
           <p class="meta">统计区间：2026-01-01 ～ 2026-01-14</p>
         </header>
         <nav class="nav-inline">
-          <a href="#p1-m1">01 头部产品动态</a>
-          <a href="#p1-m2">02 新兴产品与创新</a>
-          <a href="#p1-m3">03 财务 AI 最佳实践</a>
-          <a href="#p1-m4">04 云底座与 AI 融合</a>
+          <a href="#p1-m1">头部产品动态</a>
+          <a href="#p1-m2">新兴产品与创新</a>
+          <a href="#p1-m3">财务 AI 最佳实践</a>
+          <a href="#p1-m4">云底座与 AI 融合</a>
         </nav>
         <div class="legend">
           <span class="legend-title">图例</span>
@@ -605,7 +621,7 @@
           <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
         </div>
         <section id="p1-m1" class="section">
-          <h2 class="section-title"> 国内外行业重量级产品动态</h2>
+          <h2 class="section-title">国内外行业重量级产品动态</h2>
           <p class="section-desc">01.01～01.14 期间头部模型与品牌动态。核心要点 + 1 个参考链接。</p>
           <div class="sub-head">国内</div>
           <article class="card">
@@ -644,7 +660,7 @@
           </article>
         </section>
         <section id="p1-m2" class="section">
-          <h2 class="section-title"> 新涌现品牌与产品创新</h2>
+          <h2 class="section-title">新涌现品牌与产品创新</h2>
           <p class="section-desc">01.01～01.14 期间新产品或形态/商业模式创新。</p>
           <article class="card">
             <span class="card-tag">端侧 · 智能体</span>
@@ -670,7 +686,7 @@
           </article>
         </section>
         <section id="p1-m3" class="section">
-          <h2 class="section-title"> 企业财务管理 AI 最佳实践</h2>
+          <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
           <p class="section-desc">01.01～01.14 期间企业财务 AI 应用案例。</p>
           <article class="card">
             <span class="card-tag">行业实践</span>
@@ -686,7 +702,7 @@
           <p class="section-desc" style="margin-top:12px;">本期该时段内财务 AI 专项报道较少，以上为近期行业实践摘要，供参考。</p>
         </section>
         <section id="p1-m4" class="section">
-          <h2 class="section-title"> 云底座与 AI 融合</h2>
+          <h2 class="section-title">云底座与 AI 融合</h2>
           <p class="section-desc">01.01～01.14 期间云厂商 IaaS/PaaS/数据库与 AI 融合动态。</p>
           <article class="card">
             <span class="card-tag">趋势</span>
@@ -712,10 +728,10 @@
           <p class="meta">统计区间：2026-01-15 ～ 2026-01-29</p>
         </header>
         <nav class="nav-inline">
-          <a href="#p2-m1">01 头部产品动态</a>
-          <a href="#p2-m2">02 新兴产品与创新</a>
-          <a href="#p2-m3">03 财务 AI 最佳实践</a>
-          <a href="#p2-m4">04 云底座与 AI 融合</a>
+          <a href="#p2-m1">头部产品动态</a>
+          <a href="#p2-m2">新兴产品与创新</a>
+          <a href="#p2-m3">财务 AI 最佳实践</a>
+          <a href="#p2-m4">云底座与 AI 融合</a>
         </nav>
         <div class="legend">
           <span class="legend-title">图例</span>
@@ -726,7 +742,7 @@
         </div>
 
         <section id="p2-m1" class="section">
-          <h2 class="section-title"> 国内外行业重量级产品动态</h2>
+          <h2 class="section-title">国内外行业重量级产品动态</h2>
           <p class="section-desc">Qwen、文心、千问、扣子；Gemini、Claude、GPT 等。核心要点 + 1 个参考链接。</p>
           <div class="sub-head">国内</div>
           <article class="card">
@@ -811,7 +827,7 @@
         </section>
 
         <section id="p2-m2" class="section">
-          <h2 class="section-title"> 新涌现品牌与产品创新</h2>
+          <h2 class="section-title">新涌现品牌与产品创新</h2>
           <p class="section-desc">国内外新产品或重大形态/商业模式创新。</p>
           <article class="card">
             <span class="card-tag">国际 · 个人助手</span>
@@ -857,7 +873,7 @@
         </section>
 
         <section id="p2-m3" class="section">
-          <h2 class="section-title"> 企业财务管理 AI 最佳实践</h2>
+          <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
           <p class="section-desc">TMT、500 强、金融机构及监管试点案例。</p>
           <article class="card">
             <span class="card-tag">TMT · 连锁零售</span>
@@ -893,7 +909,7 @@
         </section>
 
         <section id="p2-m4" class="section">
-          <h2 class="section-title"> 云底座与 AI 融合</h2>
+          <h2 class="section-title">云底座与 AI 融合</h2>
           <p class="section-desc">全球公有云厂商将 IaaS、PaaS、数据库与 AI 场景融合的案例。覆盖阿里云、华为云、腾讯云、百度云、AWS、GCP、Azure 及垂类数据库品牌。</p>
           <div class="sub-head">国内云厂商</div>
           <article class="card">
@@ -1012,10 +1028,10 @@
           <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
         </header>
         <nav class="nav-inline">
-          <a href="#p3-m1">01 头部产品动态</a>
-          <a href="#p3-m2">02 新兴产品与创新</a>
-          <a href="#p3-m3">03 财务 AI 最佳实践</a>
-          <a href="#p3-m4">04 云底座与 AI 融合</a>
+          <a href="#p3-m1">头部产品动态</a>
+          <a href="#p3-m2">新兴产品与创新</a>
+          <a href="#p3-m3">财务 AI 最佳实践</a>
+          <a href="#p3-m4">云底座与 AI 融合</a>
         </nav>
         <div class="legend">
           <span class="legend-title">图例</span>
@@ -1025,28 +1041,28 @@
           <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
         </div>
         <section id="p3-m1" class="section">
-          <h2 class="section-title"> 国内外行业重量级产品动态</h2>
+          <h2 class="section-title">国内外行业重量级产品动态</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
         <section id="p3-m2" class="section">
-          <h2 class="section-title"> 新涌现品牌与产品创新</h2>
+          <h2 class="section-title">新涌现品牌与产品创新</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
         <section id="p3-m3" class="section">
-          <h2 class="section-title"> 企业财务管理 AI 最佳实践</h2>
+          <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
         <section id="p3-m4" class="section">
-          <h2 class="section-title"> 云底座与 AI 融合</h2>
+          <h2 class="section-title">云底座与 AI 融合</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
@@ -1063,28 +1079,22 @@
           <li class="timeline-item has-events">
             <div class="timeline-month">1 月上旬</div>
             <ul class="timeline-events">
-              <li>OpenAI ChatGPT Health 与 for Healthcare 发布（1.7～1.8）</li>
-              <li>智谱 AI 港股上市，成「AI 老虎」首家上市企业（1.8）</li>
-              <li>联想发布端侧个人超级智能体「天禧 AI」与 Lenovo Qira（1.8）</li>
-              <li>阿里云 × 听力熊推出儿童 AI 伙伴 Mooni M1（1.9）</li>
-              <li>Qwen 全球下载破 7 亿、衍生模型超 18 万，领跑开源社区（1.13）</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> Qwen 全球下载破 7 亿、衍生模型超 18 万，领跑开源社区（1.13）</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 智谱 AI 港股上市，成「AI 老虎」首家上市企业（1.8）</li>
+              <li><span class="timeline-module m2"><span class="timeline-dot"></span>新兴</span> 联想发布端侧个人超级智能体「天禧 AI」与 Lenovo Qira（1.8）</li>
+              <li><span class="timeline-module m2"><span class="timeline-dot"></span>新兴</span> 阿里云 × 听力熊推出儿童 AI 伙伴 Mooni M1（1.9）</li>
             </ul>
           </li>
           <li class="timeline-item has-events">
             <div class="timeline-month">1 月中下旬</div>
             <ul class="timeline-events">
-              <li>千问 App 接入阿里全生态，进入「办事时代」（1.15）</li>
-              <li>京东健康发布医生端 AI「知医」（1.17）</li>
-              <li>字节扣子 2.0 上线技能商店与 Agent Plan（1.19）</li>
-              <li>阿里云 PolarDB AI 原生能力发布，Lakebase 湖库一体（1.20）</li>
-              <li>百度文心大模型 5.0 发布，2.4 万亿参数全模态（1.22）</li>
-              <li>阿里 Qwen3-Max-Thinking 发布，HLE 领跑全球（1.26）</li>
-              <li>Google Gemini 3 升级 AI Overviews，Chrome 自动浏览</li>
-              <li>Claude 接入 Slack、Figma、Canva 等企业应用</li>
-              <li>OpenAI GPT-5.2 发布，三版本基准领先</li>
-              <li>Clawdbot 更名 Moltbot，开源个人 AI 助手走红</li>
-              <li>湖州银行生成式 AI 风控入选央行创新应用</li>
-              <li>AWS Aurora 与 Bedrock 知识库集成，RAG 与向量检索规模化</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 千问 App 接入阿里全生态，进入「办事时代」（1.15）</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 百度文心大模型 5.0 发布，2.4 万亿参数全模态（1.22）</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 阿里 Qwen3-Max-Thinking 发布，HLE 领跑全球（1.26）</li>
+              <li><span class="timeline-module m2"><span class="timeline-dot"></span>新兴</span> 京东健康发布医生端 AI「知医」（1.17）</li>
+              <li><span class="timeline-module m2"><span class="timeline-dot"></span>新兴</span> 字节扣子 2.0 上线技能商店与 Agent Plan（1.19）</li>
+              <li><span class="timeline-module m4"><span class="timeline-dot"></span>云底座</span> 阿里云 PolarDB AI 原生能力发布，Lakebase 湖库一体（1.20）</li>
+              <li><span class="timeline-module m3"><span class="timeline-dot"></span>财务</span> 湖州银行生成式 AI 风控入选央行创新应用</li>
             </ul>
           </li>
           <li class="timeline-item">
