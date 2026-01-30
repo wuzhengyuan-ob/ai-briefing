@@ -15,11 +15,20 @@
       --accent-purple: #6366f1;
       --accent-soft: #e0f2fe;
       --border: #e2e8f0;
-      --tag-bg: #f1f5f9;
+      --tag-bg: #f8fafc;
       --tag-text: #475569;
       --sidebar-width: 220px;
-      --glass: rgba(255,255,255,0.72);
-      --glass-border: rgba(226,232,240,0.8);
+      --glass: rgba(255,255,255,0.78);
+      --glass-border: rgba(226,232,240,0.85);
+      /* 模块图例配色 */
+      --m1: #0ea5e9;
+      --m1-soft: #e0f2fe;
+      --m2: #7c3aed;
+      --m2-soft: #ede9fe;
+      --m3: #059669;
+      --m3-soft: #d1fae5;
+      --m4: #d97706;
+      --m4-soft: #fffbeb;
     }
 
     * { box-sizing: border-box; }
@@ -30,9 +39,10 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
       background: var(--bg);
       background-image:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.08), transparent),
-        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14,165,233,0.06), transparent),
-        linear-gradient(180deg, #fafbff 0%, #f1f5f9 100%);
+        radial-gradient(ellipse 90% 60% at 50% -15%, rgba(99,102,241,0.06), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 100% 10%, rgba(14,165,233,0.05), transparent 45%),
+        radial-gradient(ellipse 50% 40% at 0% 60%, rgba(5,150,105,0.04), transparent 45%),
+        linear-gradient(180deg, #fcfdff 0%, #f5f7fb 50%, #f1f5f9 100%);
       min-height: 100vh;
       color: var(--text);
       line-height: 1.75;
@@ -98,9 +108,9 @@
     .sidebar-current {
       padding: 10px 12px;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(14,165,233,0.06));
+      background: linear-gradient(135deg, var(--m2-soft) 0%, var(--m1-soft) 100%);
       border-radius: 8px;
-      border: 1px solid var(--glass-border);
+      border: 1px solid rgba(99,102,241,0.2);
     }
     .sidebar-current-title {
       display: block;
@@ -142,10 +152,11 @@
     }
     .sidebar-list a.active,
     .sidebar-list button.active {
-      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(14,165,233,0.1));
+      background: linear-gradient(135deg, var(--m2-soft), var(--m1-soft));
       color: #0f172a;
       font-weight: 600;
       box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      border: 1px solid rgba(99,102,241,0.2);
     }
     .sidebar-list .issue-date {
       font-size: 11px;
@@ -182,10 +193,10 @@
       font-size: 14px;
       font-weight: 700;
       color: #0f172a;
-      margin: 0 0 20px;
+      margin: 0 0 8px;
       padding-bottom: 12px;
       border-bottom: 2px solid transparent;
-      border-image: linear-gradient(90deg, var(--accent-purple), var(--accent)) 1;
+      border-image: linear-gradient(90deg, var(--m1), var(--m2), var(--m3), var(--m4)) 1;
     }
     .timeline-list {
       list-style: none;
@@ -201,8 +212,8 @@
       top: 6px;
       bottom: 6px;
       width: 2px;
-      background: linear-gradient(180deg, var(--accent-purple), var(--accent));
-      opacity: 0.35;
+      background: linear-gradient(180deg, var(--m2) 0%, var(--m1) 35%, var(--m3) 70%, var(--m4) 100%);
+      opacity: 0.4;
       border-radius: 1px;
     }
     .timeline-item {
@@ -219,11 +230,12 @@
       border-radius: 50%;
       background: var(--card-bg);
       border: 2px solid var(--accent);
-      box-shadow: 0 0 0 2px rgba(14,165,233,0.2);
+      box-shadow: 0 0 0 2px rgba(14,165,233,0.15);
     }
     .timeline-item.has-events::before {
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent));
+      background: linear-gradient(135deg, var(--m1), var(--m2));
       border: none;
+      box-shadow: 0 1px 4px rgba(14,165,233,0.35);
     }
     .timeline-month {
       font-size: 13px;
@@ -306,11 +318,46 @@
       transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
     .nav-inline a:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      color: var(--accent);
       text-decoration: none;
     }
+    .nav-inline a[href="#m1"]:hover { background: var(--m1-soft); border-color: var(--m1); color: #0284c7; }
+    .nav-inline a[href="#m2"]:hover { background: var(--m2-soft); border-color: var(--m2); color: #6d28d9; }
+    .nav-inline a[href="#m3"]:hover { background: var(--m3-soft); border-color: var(--m3); color: #047857; }
+    .nav-inline a[href="#m4"]:hover { background: var(--m4-soft); border-color: var(--m4); color: #b45309; }
+
+    /* 图例 */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+    .legend-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-right: 8px;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .legend-dot.m1 { background: linear-gradient(135deg, var(--m1), #0284c7); }
+    .legend-dot.m2 { background: linear-gradient(135deg, var(--m2), #6d28d9); }
+    .legend-dot.m3 { background: linear-gradient(135deg, var(--m3), #047857); }
+    .legend-dot.m4 { background: linear-gradient(135deg, var(--m4), #b45309); }
 
     /* 模块卡片：双列网格 + 玻璃感 */
     .section {
@@ -328,21 +375,61 @@
     .section:hover {
       box-shadow: 0 4px 14px rgba(99,102,241,0.08), 0 2px 6px rgba(0,0,0,0.04);
     }
+    #m1.section:hover { box-shadow: 0 4px 16px rgba(14,165,233,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m2.section:hover { box-shadow: 0 4px 16px rgba(124,58,237,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m3.section:hover { box-shadow: 0 4px 16px rgba(5,150,105,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m4.section:hover { box-shadow: 0 4px 16px rgba(217,119,6,0.1), 0 2px 6px rgba(0,0,0,0.04); }
     .section-title,
     .section-desc,
     .sub-head {
       grid-column: 1 / -1;
     }
+    .issue-panel { counter-reset: section; }
+    .section { counter-increment: section; }
     .section-title {
       font-size: 17px;
       font-weight: 600;
       color: #0f172a;
       margin: 0 0 6px;
       letter-spacing: -0.01em;
-      padding-left: 12px;
-      border-left: 3px solid transparent;
-      border-image: linear-gradient(180deg, var(--accent-purple), var(--accent)) 1;
+      padding-left: 44px;
+      position: relative;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
     }
+    .section-title::before {
+      content: counter(section, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      letter-spacing: 0;
+      line-height: 28px;
+      text-align: center;
+    }
+    .section-title::before { background: linear-gradient(135deg, var(--accent-purple), var(--accent)); }
+    #m1 .section-title::before { background: linear-gradient(135deg, var(--m1), #0284c7); }
+    #m2 .section-title::before { background: linear-gradient(135deg, var(--m2), #6d28d9); }
+    #m3 .section-title::before { background: linear-gradient(135deg, var(--m3), #047857); }
+    #m4 .section-title::before { background: linear-gradient(135deg, var(--m4), #b45309); }
+    .section-title { border-left: 3px solid var(--accent); padding-left: 38px; }
+    #m1 .section-title { border-left-color: var(--m1); }
+    #m2 .section-title { border-left-color: var(--m2); }
+    #m3 .section-title { border-left-color: var(--m3); }
+    #m4 .section-title { border-left-color: var(--m4); }
+    #m2 .section-title { border-left: 3px solid var(--m2); padding-left: 38px; }
+    #m3 .section-title { border-left: 3px solid var(--m3); padding-left: 38px; }
+    #m4 .section-title { border-left: 3px solid var(--m4); padding-left: 38px; }
     .section-desc {
       font-size: 13px;
       color: var(--text-soft);
@@ -362,6 +449,14 @@
       box-shadow: 0 2px 10px rgba(99,102,241,0.08);
       border-color: rgba(99,102,241,0.25);
     }
+    #m1 .card:hover { box-shadow: 0 2px 12px rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.3); }
+    #m2 .card:hover { box-shadow: 0 2px 12px rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.25); }
+    #m3 .card:hover { box-shadow: 0 2px 12px rgba(5,150,105,0.12); border-color: rgba(5,150,105,0.25); }
+    #m4 .card:hover { box-shadow: 0 2px 12px rgba(217,119,6,0.12); border-color: rgba(217,119,6,0.25); }
+    #m1 .card-tag { border-left: 3px solid var(--m1); background: var(--m1-soft); }
+    #m2 .card-tag { border-left: 3px solid var(--m2); background: var(--m2-soft); }
+    #m3 .card-tag { border-left: 3px solid var(--m3); background: var(--m3-soft); }
+    #m4 .card-tag { border-left: 3px solid var(--m4); background: var(--m4-soft); }
     .card-title {
       font-size: 15px;
       font-weight: 600;
@@ -420,7 +515,8 @@
     footer {
       margin-top: 32px;
       padding-top: 20px;
-      border-top: 1px solid var(--border);
+      border-top: 2px solid transparent;
+      border-image: linear-gradient(90deg, var(--m1), var(--m2), var(--m3), var(--m4)) 1;
       font-size: 12px;
       color: var(--text-soft);
       text-align: center;
@@ -475,10 +571,10 @@
       <div class="sidebar-label">历史简报</div>
       <ul class="sidebar-list">
         <li>
-          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date"> 01.15 ～ 01.29</span></button>
+          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date">01.15 ～ 01.29</span></button>
         </li>
         <li>
-          <button type="button" data-issue="2">第 2 期<span class="issue-date"> 02.01 ～ 02.14</span></button>
+          <button type="button" data-issue="2">第 2 期<span class="issue-date">02.01 ～ 02.14</span></button>
         </li>
       </ul>
     </aside>
@@ -498,6 +594,13 @@
           <a href="#m3">三、财务 AI 最佳实践</a>
           <a href="#m4">四、云底座与 AI 融合</a>
         </nav>
+        <div class="legend">
+          <span class="legend-title">图例</span>
+          <span class="legend-item"><span class="legend-dot m1"></span>头部产品</span>
+          <span class="legend-item"><span class="legend-dot m2"></span>新兴产品</span>
+          <span class="legend-item"><span class="legend-dot m3"></span>财务实践</span>
+          <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
+        </div>
 
         <section id="m1" class="section">
           <h2 class="section-title">一、国内外行业重量级产品动态</h2>
@@ -785,6 +888,19 @@
           <p class="sub">本期内容将于 2026 年 2 月中旬更新。</p>
           <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
         </header>
+        <nav class="nav-inline">
+          <a href="#m1">一、头部产品动态</a>
+          <a href="#m2">二、新兴产品与创新</a>
+          <a href="#m3">三、财务 AI 最佳实践</a>
+          <a href="#m4">四、云底座与 AI 融合</a>
+        </nav>
+        <div class="legend">
+          <span class="legend-title">图例</span>
+          <span class="legend-item"><span class="legend-dot m1"></span>头部产品</span>
+          <span class="legend-item"><span class="legend-dot m2"></span>新兴产品</span>
+          <span class="legend-item"><span class="legend-dot m3"></span>财务实践</span>
+          <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
+        </div>
         <section class="section">
           <h2 class="section-title">一、国内外行业重量级产品动态</h2>
           <div class="placeholder-section">
