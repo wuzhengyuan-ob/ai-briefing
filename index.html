@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -320,10 +320,10 @@
     .nav-inline a:hover {
       text-decoration: none;
     }
-    .nav-inline a[href="#m1"]:hover { background: var(--m1-soft); border-color: var(--m1); color: #0284c7; }
-    .nav-inline a[href="#m2"]:hover { background: var(--m2-soft); border-color: var(--m2); color: #6d28d9; }
-    .nav-inline a[href="#m3"]:hover { background: var(--m3-soft); border-color: var(--m3); color: #047857; }
-    .nav-inline a[href="#m4"]:hover { background: var(--m4-soft); border-color: var(--m4); color: #b45309; }
+    .nav-inline a[href="#m1"]:hover, .nav-inline a[href$="-m1"]:hover { background: var(--m1-soft); border-color: var(--m1); color: #0284c7; }
+    .nav-inline a[href="#m2"]:hover, .nav-inline a[href$="-m2"]:hover { background: var(--m2-soft); border-color: var(--m2); color: #6d28d9; }
+    .nav-inline a[href="#m3"]:hover, .nav-inline a[href$="-m3"]:hover { background: var(--m3-soft); border-color: var(--m3); color: #047857; }
+    .nav-inline a[href="#m4"]:hover, .nav-inline a[href$="-m4"]:hover { background: var(--m4-soft); border-color: var(--m4); color: #b45309; }
 
     /* 图例 */
     .legend {
@@ -375,10 +375,10 @@
     .section:hover {
       box-shadow: 0 4px 14px rgba(99,102,241,0.08), 0 2px 6px rgba(0,0,0,0.04);
     }
-    #m1.section:hover { box-shadow: 0 4px 16px rgba(14,165,233,0.1), 0 2px 6px rgba(0,0,0,0.04); }
-    #m2.section:hover { box-shadow: 0 4px 16px rgba(124,58,237,0.1), 0 2px 6px rgba(0,0,0,0.04); }
-    #m3.section:hover { box-shadow: 0 4px 16px rgba(5,150,105,0.1), 0 2px 6px rgba(0,0,0,0.04); }
-    #m4.section:hover { box-shadow: 0 4px 16px rgba(217,119,6,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m1.section:hover, #p1-m1.section:hover, #p2-m1.section:hover, #p3-m1.section:hover { box-shadow: 0 4px 16px rgba(14,165,233,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m2.section:hover, #p1-m2.section:hover, #p2-m2.section:hover, #p3-m2.section:hover { box-shadow: 0 4px 16px rgba(124,58,237,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m3.section:hover, #p1-m3.section:hover, #p2-m3.section:hover, #p3-m3.section:hover { box-shadow: 0 4px 16px rgba(5,150,105,0.1), 0 2px 6px rgba(0,0,0,0.04); }
+    #m4.section:hover, #p1-m4.section:hover, #p2-m4.section:hover, #p3-m4.section:hover { box-shadow: 0 4px 16px rgba(217,119,6,0.1), 0 2px 6px rgba(0,0,0,0.04); }
     .section-title,
     .section-desc,
     .sub-head {
@@ -418,15 +418,15 @@
       text-align: center;
     }
     .section-title::before { background: linear-gradient(135deg, var(--accent-purple), var(--accent)); }
-    #m1 .section-title::before { background: linear-gradient(135deg, var(--m1), #0284c7); }
-    #m2 .section-title::before { background: linear-gradient(135deg, var(--m2), #6d28d9); }
-    #m3 .section-title::before { background: linear-gradient(135deg, var(--m3), #047857); }
-    #m4 .section-title::before { background: linear-gradient(135deg, var(--m4), #b45309); }
+    #m1 .section-title::before, #p1-m1 .section-title::before, #p2-m1 .section-title::before, #p3-m1 .section-title::before { background: linear-gradient(135deg, var(--m1), #0284c7); }
+    #m2 .section-title::before, #p1-m2 .section-title::before, #p2-m2 .section-title::before, #p3-m2 .section-title::before { background: linear-gradient(135deg, var(--m2), #6d28d9); }
+    #m3 .section-title::before, #p1-m3 .section-title::before, #p2-m3 .section-title::before, #p3-m3 .section-title::before { background: linear-gradient(135deg, var(--m3), #047857); }
+    #m4 .section-title::before, #p1-m4 .section-title::before, #p2-m4 .section-title::before, #p3-m4 .section-title::before { background: linear-gradient(135deg, var(--m4), #b45309); }
     .section-title { border-left: 3px solid var(--accent); padding-left: 38px; }
-    #m1 .section-title { border-left-color: var(--m1); }
-    #m2 .section-title { border-left-color: var(--m2); }
-    #m3 .section-title { border-left-color: var(--m3); }
-    #m4 .section-title { border-left-color: var(--m4); }
+    #m1 .section-title, #p1-m1 .section-title, #p2-m1 .section-title, #p3-m1 .section-title { border-left-color: var(--m1); }
+    #m2 .section-title, #p1-m2 .section-title, #p2-m2 .section-title, #p3-m2 .section-title { border-left-color: var(--m2); }
+    #m3 .section-title, #p1-m3 .section-title, #p2-m3 .section-title, #p3-m3 .section-title { border-left-color: var(--m3); }
+    #m4 .section-title, #p1-m4 .section-title, #p2-m4 .section-title, #p3-m4 .section-title { border-left-color: var(--m4); }
     #m2 .section-title { border-left: 3px solid var(--m2); padding-left: 38px; }
     #m3 .section-title { border-left: 3px solid var(--m3); padding-left: 38px; }
     #m4 .section-title { border-left: 3px solid var(--m4); padding-left: 38px; }
@@ -449,14 +449,14 @@
       box-shadow: 0 2px 10px rgba(99,102,241,0.08);
       border-color: rgba(99,102,241,0.25);
     }
-    #m1 .card:hover { box-shadow: 0 2px 12px rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.3); }
-    #m2 .card:hover { box-shadow: 0 2px 12px rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.25); }
-    #m3 .card:hover { box-shadow: 0 2px 12px rgba(5,150,105,0.12); border-color: rgba(5,150,105,0.25); }
-    #m4 .card:hover { box-shadow: 0 2px 12px rgba(217,119,6,0.12); border-color: rgba(217,119,6,0.25); }
-    #m1 .card-tag { border-left: 3px solid var(--m1); background: var(--m1-soft); }
-    #m2 .card-tag { border-left: 3px solid var(--m2); background: var(--m2-soft); }
-    #m3 .card-tag { border-left: 3px solid var(--m3); background: var(--m3-soft); }
-    #m4 .card-tag { border-left: 3px solid var(--m4); background: var(--m4-soft); }
+    #p1-m1 .card:hover, #p2-m1 .card:hover, #p3-m1 .card:hover { box-shadow: 0 2px 12px rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.3); }
+    #p1-m2 .card:hover, #p2-m2 .card:hover, #p3-m2 .card:hover { box-shadow: 0 2px 12px rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.25); }
+    #p1-m3 .card:hover, #p2-m3 .card:hover, #p3-m3 .card:hover { box-shadow: 0 2px 12px rgba(5,150,105,0.12); border-color: rgba(5,150,105,0.25); }
+    #p1-m4 .card:hover, #p2-m4 .card:hover, #p3-m4 .card:hover { box-shadow: 0 2px 12px rgba(217,119,6,0.12); border-color: rgba(217,119,6,0.25); }
+    #m1 .card-tag, #p1-m1 .card-tag, #p2-m1 .card-tag, #p3-m1 .card-tag { border-left: 3px solid var(--m1); background: var(--m1-soft); }
+    #m2 .card-tag, #p1-m2 .card-tag, #p2-m2 .card-tag, #p3-m2 .card-tag { border-left: 3px solid var(--m2); background: var(--m2-soft); }
+    #m3 .card-tag, #p1-m3 .card-tag, #p2-m3 .card-tag, #p3-m3 .card-tag { border-left: 3px solid var(--m3); background: var(--m3-soft); }
+    #m4 .card-tag, #p1-m4 .card-tag, #p2-m4 .card-tag, #p3-m4 .card-tag { border-left: 3px solid var(--m4); background: var(--m4-soft); }
     .card-title {
       font-size: 15px;
       font-weight: 600;
@@ -565,34 +565,157 @@
       </div>
       <div class="sidebar-label">当前期</div>
       <div class="sidebar-current">
-        <span class="sidebar-current-title">第 1 期</span>
+        <span class="sidebar-current-title">第 2 期</span>
         <span class="issue-date">01.15 ～ 01.29</span>
       </div>
       <div class="sidebar-label">历史简报</div>
       <ul class="sidebar-list">
         <li>
-          <button type="button" class="active" data-issue="1">第 1 期<span class="issue-date">01.15 ～ 01.29</span></button>
+          <button type="button" data-issue="1">第 1 期<span class="issue-date">01.01 ～ 01.14</span></button>
         </li>
         <li>
-          <button type="button" data-issue="2">第 2 期<span class="issue-date">02.01 ～ 02.14</span></button>
+          <button type="button" class="active" data-issue="2">第 2 期<span class="issue-date">01.15 ～ 01.29</span></button>
+        </li>
+        <li>
+          <button type="button" data-issue="3">第 3 期<span class="issue-date">02.01 ～ 02.14</span></button>
         </li>
       </ul>
     </aside>
 
     <main class="main">
       <div class="main-content">
-      <!-- 第 1 期 -->
-      <div id="issue-1" class="issue-panel active">
+      <!-- 第 1 期：01.01～01.14 -->
+      <div id="issue-1" class="issue-panel">
         <header class="issue-header">
           <h1>第 1 期</h1>
+          <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
+          <p class="meta">统计区间：2026-01-01 ～ 2026-01-14</p>
+        </header>
+        <nav class="nav-inline">
+          <a href="#p1-m1">一、头部产品动态</a>
+          <a href="#p1-m2">二、新兴产品与创新</a>
+          <a href="#p1-m3">三、财务 AI 最佳实践</a>
+          <a href="#p1-m4">四、云底座与 AI 融合</a>
+        </nav>
+        <div class="legend">
+          <span class="legend-title">图例</span>
+          <span class="legend-item"><span class="legend-dot m1"></span>头部产品</span>
+          <span class="legend-item"><span class="legend-dot m2"></span>新兴产品</span>
+          <span class="legend-item"><span class="legend-dot m3"></span>财务实践</span>
+          <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
+        </div>
+        <section id="p1-m1" class="section">
+          <h2 class="section-title">一、国内外行业重量级产品动态</h2>
+          <p class="section-desc">01.01～01.14 期间头部模型与品牌动态。核心要点 + 1 个参考链接。</p>
+          <div class="sub-head">国内</div>
+          <article class="card">
+            <span class="card-tag">Qwen · 生态</span>
+            <h3 class="card-title">Qwen 全球下载破 7 亿、衍生模型超 18 万，领跑开源社区</h3>
+            <div class="card-body">
+              <ul>
+                <li>1 月 13 日报道：Qwen 在 Hugging Face 下载量达 7 亿次，成为全球最受欢迎的开源 AI 系统之一。</li>
+                <li>已开源近 400 个模型，衍生版本超 18 万个；12 月单月下载量超过 Meta、DeepSeek、OpenAI 等八家总和。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://english.news.cn/20260113/004b0522f987475cbf83ffc3a8d009aa/c.html" target="_blank" rel="noopener">参考：新华网英文</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">智谱 · 上市</span>
+            <h3 class="card-title">智谱 AI 港股上市，成「AI 老虎」首家上市企业</h3>
+            <div class="card-body">
+              <ul>
+                <li>1 月 8 日智谱 AI 在香港上市，被外媒称为中国「AI 老虎」首家登陆资本市场。</li>
+                <li>同日 OpenAI 知识图谱等动态受关注，与智谱 IPO 共同成为当周热点。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.cnbc.com/2026/01/08/china-ai-tiger-goes-ipo-zhipu-hong-kong-debut-openai-knowledge-atlas-hsi-hang-seng-listing.html" target="_blank" rel="noopener">参考：CNBC</a>
+          </article>
+          <div class="sub-head">国际</div>
+          <article class="card">
+            <span class="card-tag">OpenAI</span>
+            <h3 class="card-title">OpenAI：ChatGPT Health 与 for Healthcare 发布</h3>
+            <div class="card-body">
+              <ul>
+                <li>1 月 7 日 ChatGPT Health 正式发布；1 月 8 日 OpenAI for Healthcare 新品亮相。</li>
+                <li>医疗场景成为 OpenAI 产品线重点方向之一。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://openai.com/zh-Hans-CN/news/product-releases/" target="_blank" rel="noopener">参考：OpenAI 新闻</a>
+          </article>
+        </section>
+        <section id="p1-m2" class="section">
+          <h2 class="section-title">二、新涌现品牌与产品创新</h2>
+          <p class="section-desc">01.01～01.14 期间新产品或形态/商业模式创新。</p>
+          <article class="card">
+            <span class="card-tag">端侧 · 智能体</span>
+            <h3 class="card-title">联想发布端侧个人超级智能体「天禧 AI」与 Lenovo Qira</h3>
+            <div class="card-body">
+              <ul>
+                <li>1 月 8 日发布；采用「端云一体」混合架构，已嵌入 AI 手机、AI 平板。</li>
+                <li>全球首款个人超级智能体 Lenovo Qira 同步发布。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://finance.sina.com.cn/tech/2026-01-08/doc-inhfqyhi5220787.shtml" target="_blank" rel="noopener">参考：新浪科技</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">儿童 AI</span>
+            <h3 class="card-title">阿里云 × 听力熊推出儿童 AI 伙伴 Mooni M1</h3>
+            <div class="card-body">
+              <ul>
+                <li>1 月 9 日阿里云与听力熊联合推出，基于通义千问深度定制的儿童 AI 对话智能体。</li>
+                <li>具备情感识别与共情能力，不止会聊天、更懂孩子情绪与成长。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://www.chinaz.com/ainews/24465.shtml" target="_blank" rel="noopener">参考：ChinaZ</a>
+          </article>
+        </section>
+        <section id="p1-m3" class="section">
+          <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
+          <p class="section-desc">01.01～01.14 期间企业财务 AI 应用案例。</p>
+          <article class="card">
+            <span class="card-tag">行业实践</span>
+            <h3 class="card-title">AI 报销与智审：流程压缩与风控提效</h3>
+            <div class="card-body">
+              <ul>
+                <li>中兴新云 × 腾讯云方案：报销周期 10 天 → 约 2 小时，AI 智审风险识别约 90%、人工审核量降约 90%。</li>
+                <li>阿里商旅智能审核：98% 自动核验率，处理耗时缩短约 70%；合思 AI 报销将员工操作压至 3 分钟内。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
+          </article>
+          <p class="section-desc" style="margin-top:12px;">本期该时段内财务 AI 专项报道较少，以上为近期行业实践摘要，供参考。</p>
+        </section>
+        <section id="p1-m4" class="section">
+          <h2 class="section-title">四、云底座与 AI 融合</h2>
+          <p class="section-desc">01.01～01.14 期间云厂商 IaaS/PaaS/数据库与 AI 融合动态。</p>
+          <article class="card">
+            <span class="card-tag">趋势</span>
+            <h3 class="card-title">云厂商「AI 就绪数据库」与 RAG 集成成主流方向</h3>
+            <div class="card-body">
+              <ul>
+                <li>阿里云 PolarDB、AWS Aurora + Bedrock、Azure Cosmos DB 等均在 1 月集中释放 AI 融合能力（部分发布于 1 月中下旬）。</li>
+                <li>库内推理、向量检索、RAG 知识库成为云数据库标配能力。</li>
+              </ul>
+            </div>
+            <a class="card-link" href="https://help.aliyun.com/zh/polardb/polardb-for-mysql/user-guide/polardb-for-ai/" target="_blank" rel="noopener">参考：PolarDB for AI</a>
+          </article>
+          <p class="section-desc" style="margin-top:12px;">本期 01.01～01.14 内云底座与 AI 融合的单独事件报道较少，以上为趋势与后续期内容预告。</p>
+        </section>
+        <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
+      </div>
+
+      <!-- 第 2 期：01.15～01.29 -->
+      <div id="issue-2" class="issue-panel active">
+        <header class="issue-header">
+          <h1>第 2 期</h1>
           <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
           <p class="meta">统计区间：2026-01-15 ～ 2026-01-29</p>
         </header>
         <nav class="nav-inline">
-          <a href="#m1">01 头部产品动态</a>
-          <a href="#m2">02 新兴产品与创新</a>
-          <a href="#m3">03 财务 AI 最佳实践</a>
-          <a href="#m4">04 云底座与 AI 融合</a>
+          <a href="#p2-m1">一、头部产品动态</a>
+          <a href="#p2-m2">二、新兴产品与创新</a>
+          <a href="#p2-m3">三、财务 AI 最佳实践</a>
+          <a href="#p2-m4">四、云底座与 AI 融合</a>
         </nav>
         <div class="legend">
           <span class="legend-title">图例</span>
@@ -602,8 +725,8 @@
           <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
         </div>
 
-        <section id="m1" class="section">
-          <h2 class="section-title">国内外行业重量级产品动态</h2>
+        <section id="p2-m1" class="section">
+          <h2 class="section-title">一、国内外行业重量级产品动态</h2>
           <p class="section-desc">Qwen、文心、千问、扣子；Gemini、Claude、GPT 等。核心要点 + 1 个参考链接。</p>
           <div class="sub-head">国内</div>
           <article class="card">
@@ -687,8 +810,8 @@
           </article>
         </section>
 
-        <section id="m2" class="section">
-          <h2 class="section-title">新涌现品牌与产品创新</h2>
+        <section id="p2-m2" class="section">
+          <h2 class="section-title">二、新涌现品牌与产品创新</h2>
           <p class="section-desc">国内外新产品或重大形态/商业模式创新。</p>
           <article class="card">
             <span class="card-tag">国际 · 个人助手</span>
@@ -733,8 +856,8 @@
           </article>
         </section>
 
-        <section id="m3" class="section">
-          <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
+        <section id="p2-m3" class="section">
+          <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
           <p class="section-desc">TMT、500 强、金融机构及监管试点案例。</p>
           <article class="card">
             <span class="card-tag">TMT · 连锁零售</span>
@@ -769,8 +892,8 @@
           </article>
         </section>
 
-        <section id="m4" class="section">
-          <h2 class="section-title">云底座与 AI 融合</h2>
+        <section id="p2-m4" class="section">
+          <h2 class="section-title">四、云底座与 AI 融合</h2>
           <p class="section-desc">全球公有云厂商将 IaaS、PaaS、数据库与 AI 场景融合的案例。覆盖阿里云、华为云、腾讯云、百度云、AWS、GCP、Azure 及垂类数据库品牌。</p>
           <div class="sub-head">国内云厂商</div>
           <article class="card">
@@ -881,18 +1004,18 @@
         <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
       </div>
 
-      <!-- 第 2 期：占位，后续更新时替换内容 -->
-      <div id="issue-2" class="issue-panel">
+      <!-- 第 3 期：占位，后续更新时替换内容 -->
+      <div id="issue-3" class="issue-panel">
         <header class="issue-header">
-          <h1>第 2 期</h1>
+          <h1>第 3 期</h1>
           <p class="sub">本期内容将于 2026 年 2 月中旬更新。</p>
           <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
         </header>
         <nav class="nav-inline">
-          <a href="#m1">一、头部产品动态</a>
-          <a href="#m2">二、新兴产品与创新</a>
-          <a href="#m3">三、财务 AI 最佳实践</a>
-          <a href="#m4">四、云底座与 AI 融合</a>
+          <a href="#p3-m1">一、头部产品动态</a>
+          <a href="#p3-m2">二、新兴产品与创新</a>
+          <a href="#p3-m3">三、财务 AI 最佳实践</a>
+          <a href="#p3-m4">四、云底座与 AI 融合</a>
         </nav>
         <div class="legend">
           <span class="legend-title">图例</span>
@@ -901,28 +1024,28 @@
           <span class="legend-item"><span class="legend-dot m3"></span>财务实践</span>
           <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
         </div>
-        <section class="section">
+        <section id="p3-m1" class="section">
           <h2 class="section-title">一、国内外行业重量级产品动态</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section class="section">
+        <section id="p3-m2" class="section">
           <h2 class="section-title">二、新涌现品牌与产品创新</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section class="section">
+        <section id="p3-m3" class="section">
           <h2 class="section-title">三、企业财务管理 AI 最佳实践</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section class="section">
+        <section id="p3-m4" class="section">
           <h2 class="section-title">四、云底座与 AI 融合</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
@@ -938,26 +1061,36 @@
         <p style="font-size:12px;color:var(--text-soft);margin:-12px 0 16px;">根据各期简报整理</p>
         <ul class="timeline-list">
           <li class="timeline-item has-events">
-            <div class="timeline-month">1 月</div>
+            <div class="timeline-month">1 月上旬</div>
             <ul class="timeline-events">
-              <li>阿里 Qwen3-Max-Thinking 发布，HLE 领跑全球</li>
-              <li>千问 App 接入阿里全生态，进入「办事时代」</li>
-              <li>百度文心大模型 5.0 发布，2.4 万亿参数全模态</li>
+              <li>OpenAI ChatGPT Health 与 for Healthcare 发布（1.7～1.8）</li>
+              <li>智谱 AI 港股上市，成「AI 老虎」首家上市企业（1.8）</li>
+              <li>联想发布端侧个人超级智能体「天禧 AI」与 Lenovo Qira（1.8）</li>
+              <li>阿里云 × 听力熊推出儿童 AI 伙伴 Mooni M1（1.9）</li>
+              <li>Qwen 全球下载破 7 亿、衍生模型超 18 万，领跑开源社区（1.13）</li>
+            </ul>
+          </li>
+          <li class="timeline-item has-events">
+            <div class="timeline-month">1 月中下旬</div>
+            <ul class="timeline-events">
+              <li>千问 App 接入阿里全生态，进入「办事时代」（1.15）</li>
+              <li>京东健康发布医生端 AI「知医」（1.17）</li>
+              <li>字节扣子 2.0 上线技能商店与 Agent Plan（1.19）</li>
+              <li>阿里云 PolarDB AI 原生能力发布，Lakebase 湖库一体（1.20）</li>
+              <li>百度文心大模型 5.0 发布，2.4 万亿参数全模态（1.22）</li>
+              <li>阿里 Qwen3-Max-Thinking 发布，HLE 领跑全球（1.26）</li>
               <li>Google Gemini 3 升级 AI Overviews，Chrome 自动浏览</li>
               <li>Claude 接入 Slack、Figma、Canva 等企业应用</li>
               <li>OpenAI GPT-5.2 发布，三版本基准领先</li>
               <li>Clawdbot 更名 Moltbot，开源个人 AI 助手走红</li>
-              <li>扣子 2.0 上线技能商店与 Agent Plan</li>
-              <li>京东健康发布医生端 AI「知医」</li>
               <li>湖州银行生成式 AI 风控入选央行创新应用</li>
-              <li>阿里云 PolarDB AI 原生能力发布，Lakebase 湖库一体</li>
               <li>AWS Aurora 与 Bedrock 知识库集成，RAG 与向量检索规模化</li>
             </ul>
           </li>
           <li class="timeline-item">
             <div class="timeline-month">2 月</div>
             <ul class="timeline-events">
-              <li class="empty">敬请期待 · 第 2 期更新后补充</li>
+              <li class="empty">敬请期待 · 第 3 期更新后补充</li>
             </ul>
           </li>
           <li class="timeline-item">
