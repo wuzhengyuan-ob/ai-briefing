@@ -31,6 +31,114 @@
       --m4-soft: #fffbeb;
     }
 
+    /* ========== 新年主题（第 3 期 · 马年红金配色）========== */
+    body.cny-theme {
+      --bg: #fef7f7;
+      --bg-subtle: #fce8e8;
+      --card-bg: #fffbfb;
+      --text: #2d1818;
+      --text-soft: #6b3d3d;
+      --accent: #b91c1c;
+      --accent-gold: #b8860b;
+      --accent-soft: #fef2f2;
+      --border: #fecaca;
+      --tag-bg: #fef7f7;
+      --tag-text: #7f1d1d;
+      --glass: rgba(255,248,248,0.88);
+      --glass-border: rgba(254,202,202,0.9);
+      --m1: #b91c1c;
+      --m1-soft: #fef2f2;
+      --m2: #92400e;
+      --m2-soft: #fffbeb;
+      --m3: #065f46;
+      --m3-soft: #d1fae5;
+      --m4: #b45309;
+      --m4-soft: #fffbeb;
+    }
+    body.cny-theme {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184,28,28,0.08), transparent 45%),
+        radial-gradient(ellipse 60% 40% at 100% 20%, rgba(184,134,11,0.06), transparent 40%),
+        linear-gradient(180deg, #fffbfb 0%, #fef7f7 50%, #fce8e8 100%);
+    }
+    body.cny-theme .issue-panel.active .issue-header {
+      position: relative;
+      padding-top: 48px;
+      border-bottom-color: rgba(184,134,11,0.4);
+    }
+    body.cny-theme .issue-panel.active .issue-header::before {
+      content: '🐴 马年大吉 · 新春快乐';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #7f1d1d;
+      background: linear-gradient(90deg, transparent, rgba(184,134,11,0.25), rgba(184,134,11,0.35), rgba(184,134,11,0.25), transparent);
+      border-radius: 8px;
+      letter-spacing: 0.2em;
+      animation: cny-shine 3s ease-in-out infinite;
+    }
+    @keyframes cny-shine {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    body.cny-theme .issue-panel.active .issue-header h1 {
+      color: #7f1d1d;
+    }
+    body.cny-theme .sidebar-current {
+      background: linear-gradient(135deg, #fef2f2 0%, #fffbeb 100%);
+      border-color: rgba(184,134,11,0.5);
+      box-shadow: 0 0 0 1px rgba(184,134,11,0.2);
+      animation: cny-glow 2.5s ease-in-out infinite;
+    }
+    @keyframes cny-glow {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(184,134,11,0.2); }
+      50% { box-shadow: 0 0 12px 2px rgba(184,134,11,0.25); }
+    }
+    body.cny-theme .sidebar-list button.active {
+      background: linear-gradient(135deg, #fef2f2, #fffbeb);
+      border-color: rgba(184,134,11,0.45);
+      color: #7f1d1d;
+    }
+    body.cny-theme .issue-panel.active .section-title {
+      border-left-color: var(--accent);
+    }
+    body.cny-theme .issue-panel.active .card {
+      border-color: var(--border);
+    }
+    body.cny-theme .issue-panel.active .card:hover {
+      border-color: rgba(184,28,28,0.35);
+      box-shadow: 0 2px 12px rgba(184,28,28,0.08);
+    }
+    body.cny-theme .issue-panel.active .card-tag {
+      background: #fef2f2;
+      border-left-color: var(--accent);
+    }
+    body.cny-theme a { color: #b91c1c; }
+    body.cny-theme .glossary-say {
+      border-left-color: #b91c1c;
+      background: #fef7f7;
+    }
+    body.cny-theme .issue-panel.active .section {
+      animation: cny-fade-in 0.5s ease;
+    }
+    @keyframes cny-fade-in {
+      from { opacity: 0.6; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body.cny-theme .timeline-title {
+      border-image: linear-gradient(90deg, #b91c1c, #b8860b, #065f46) 1;
+    }
+    body.cny-theme .timeline-item.has-events::before {
+      background: linear-gradient(135deg, #b91c1c, #b8860b);
+    }
+
     * { box-sizing: border-box; }
 
     body {
@@ -600,7 +708,7 @@
       </div>
       <div class="sidebar-label">当前期</div>
       <div class="sidebar-current">
-        <span class="sidebar-current-title">第 2 期</span> <span class="issue-date">01.15 ～ 01.29</span>
+        <span class="sidebar-current-title">第 3 期</span> <span class="issue-date">01.30 ～ 02.15</span>
       </div>
       <div class="sidebar-label">历史简报</div>
       <ul class="sidebar-list">
@@ -608,10 +716,13 @@
           <button type="button" data-issue="1">第 1 期 <span class="issue-date">01.01 ～ 01.14</span></button>
         </li>
         <li>
-          <button type="button" class="active" data-issue="2">第 2 期 <span class="issue-date">01.15 ～ 01.29</span></button>
+          <button type="button" data-issue="2">第 2 期 <span class="issue-date">01.15 ～ 01.29</span></button>
         </li>
         <li>
-          <button type="button" data-issue="3">第 3 期 <span class="issue-date">02.01 ～ 02.14</span></button>
+          <button type="button" class="active" data-issue="3">第 3 期 <span class="issue-date">01.30 ～ 02.15</span></button>
+        </li>
+        <li>
+          <button type="button" data-issue="4">第 4 期 <span class="issue-date">02.16 ～ 03.01</span></button>
         </li>
       </ul>
     </aside>
@@ -767,7 +878,7 @@
       </div>
 
       <!-- 第 2 期：01.15～01.29 -->
-      <div id="issue-2" class="issue-panel active">
+      <div id="issue-2" class="issue-panel">
         <header class="issue-header">
           <h1>第 2 期</h1>
           <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
@@ -1110,12 +1221,12 @@
         <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
       </div>
 
-      <!-- 第 3 期：占位，后续更新时替换内容 -->
-      <div id="issue-3" class="issue-panel">
+      <!-- 第 3 期：01.30～02.15（新春 · 马年主题） -->
+      <div id="issue-3" class="issue-panel active">
         <header class="issue-header">
           <h1>第 3 期</h1>
-          <p class="sub">本期内容将于 2026 年 2 月中旬更新。</p>
-          <p class="meta">计划区间：2026-02-01 ～ 2026-02-14</p>
+          <p class="sub">覆盖国内外头部产品动态、新兴产品与商业模式、企业财务 AI 实践。按讨论热度筛选。</p>
+          <p class="meta">统计区间：2026-01-30 ～ 2026-02-15</p>
           <div class="glossary">
             <span class="glossary-title">💡 阅读说明</span>
             <p style="margin:0 0 8px;">为方便不熟悉技术名词的读者，简报中部分内容附有<strong>「通俗说」</strong>白话解读；下方<strong>「术语简表」</strong>可随时查阅。</p>
@@ -1153,26 +1264,293 @@
         </div>
         <section id="p3-m1" class="section">
           <h2 class="section-title">国内外行业重量级产品动态</h2>
+          <p class="section-desc">01.30～02.13 期间头部模型与品牌动态。核心要点 + 参考链接。</p>
+          <div class="sub-head">国内</div>
+          <article class="card">
+            <span class="card-tag">Qwen · MoE</span>
+            <h3 class="card-title">阿里 Qwen2.5-Max 发布：超大规模 MoE，多项基准超 DeepSeek V3</h3>
+            <div class="card-body">
+              <ul>
+                <li>超大规模 MoE 混合专家模型，预训练数据超 20 万亿 tokens；Arena-Hard、LiveBench、GPQA-Diamond 等基准超越 DeepSeek V3。</li>
+                <li>Chatbot Arena 全球排名第七，数学与编程能力第一；Qwen Chat 可免费体验，百炼平台提供 API。QwQ-Max-Preview 深度推理版计划推独立 APP。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里新一代「超大混合专家」模型，在多项国际评测里超过 DeepSeek V3，尤其数学和编程表现突出；后续还会出专注「深度思考」的独立应用。</p>
+            </div>
+            <a class="card-link" href="https://qwenlm.github.io/zh/blog/qwen2.5-max/" target="_blank" rel="noopener">参考：Qwen 官方博客</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">腾讯元宝 · 双模态</span>
+            <h3 class="card-title">腾讯元宝接入 DeepSeek 双模型，混元加持让 DeepSeek 能读图</h3>
+            <div class="card-body">
+              <ul>
+                <li>元宝接入 DeepSeek-R1 满血版，支持混元 + DeepSeek 双模型切换；结合混元多模态能力，DeepSeek 在元宝中可理解图片内容与细节，超越官方仅 OCR 的能力。</li>
+                <li>已接入微信、腾讯文档、QQ 浏览器等 14 款产品；2 月曾升至中国区苹果免费 APP 下载榜前列。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>在腾讯元宝里可以用「混元+DeepSeek」两种模型，且给 DeepSeek 接上了读图能力，发图就能让 AI 分析内容；覆盖微信等腾讯系应用。</p>
+            </div>
+            <a class="card-link" href="https://new.qq.com/rain/a/20250221A02SKE00" target="_blank" rel="noopener">参考：腾讯新闻</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">通义 · 多模态 / 长文本</span>
+            <h3 class="card-title">通义千问多款更新：Qwen2.5-VL 视觉冠军、Qwen2.5-1M 百万 token</h3>
+            <div class="card-body">
+              <ul>
+                <li>Qwen2.5-VL：视觉理解多模态，3B/7B/72B 三版本，旗舰版 13 项评测视觉理解夺冠。</li>
+                <li>Qwen2.5-1M：支持百万级 token 长文本，7B/14B 两版本。阿里宣布未来三年投入超 3800 亿元用于云与 AI 基础设施。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里同时升级「看图」和「看长文」能力：视觉模型在多项评测拿第一，长文本模型能一次处理百万字级别内容；公司继续重金押注云和 AI 基建。</p>
+            </div>
+            <a class="card-link" href="https://ali-home.alibaba.com/document-1826043628217171968" target="_blank" rel="noopener">参考：阿里巴巴集团</a>
+          </article>
+          <div class="sub-head">国际</div>
+          <article class="card">
+            <span class="card-tag">Claude Opus 4.6</span>
+            <h3 class="card-title">Claude Opus 4.6 发布：100 万 token 上下文、编程与长文档增强</h3>
+            <div class="card-body">
+              <ul>
+                <li>2 月上旬 Anthropic 发布旗舰更新：编程与 Agent 规划能力增强，代码审查与调试、金融分析/研究/文档任务表现提升。</li>
+                <li>首次支持 100 万 token 上下文（约 70 万汉字）；「大海捞针」类任务准确率从约 18.5% 提升至约 76%，适合长文档分析。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>Claude 旗舰版一次能处理超长文档（约 70 万汉字），在长文中找信息的能力大幅提升；编程、代码审查和金融/研究类任务也更强。</p>
+            </div>
+            <a class="card-link" href="https://www.sdtimes.com/ai/this-week-in-ai-updates-claude-opus-4-6-gpt-5-3-codex-and-more-february-6-2026/" target="_blank" rel="noopener">参考：SD Times</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">GPT-5.3-Codex</span>
+            <h3 class="card-title">OpenAI GPT-5.3-Codex：编程 Agent 升级，可独立执行复杂任务</h3>
+            <div class="card-body">
+              <ul>
+                <li>2 月 OpenAI 推出面向编程的 Codex 版本：结合 GPT-5.2 推理能力与既往代码表现，支持长时间研究与复杂执行，可输出进度报告。</li>
+                <li>OSWorld 真实环境操作测试成绩显著提升；开发过程中曾用早期版本参与自身调试，引发业内关注。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>OpenAI 的「编程专用」模型：能独立完成复杂编程任务并汇报进度，在模拟真实操作环境的测试里进步明显；且用 AI 参与了自身开发。</p>
+            </div>
+            <a class="card-link" href="https://www.eet-china.com/mp/a473359.html" target="_blank" rel="noopener">参考：电子工程专辑</a>
+          </article>
+        </section>
+        <section id="p3-m2" class="section">
+          <h2 class="section-title">新涌现品牌与产品创新</h2>
+          <p class="section-desc">01.30～02.13 期间新产品或形态/商业模式创新。</p>
+          <article class="card">
+            <span class="card-tag">国内 · 营销 SaaS</span>
+            <h3 class="card-title">虎鲸跳跃：AI 打破微信营销与销售黑箱，完成 Pre-A 融资</h3>
+            <div class="card-body">
+              <ul>
+                <li>聚焦微信生态的 AI 营销与销售工具，用 AI 打通线索、跟进、成单等环节的信息黑箱，提升可衡量与可优化能力。</li>
+                <li>完成 300 万美元 Pre-A 轮融资，代表「AI+私域/销售」方向的新兴品牌。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>用 AI 把微信里的营销和销售过程「照亮」：谁在跟进、效果如何、哪里卡住都能看清，方便优化成单；已获 Pre-A 轮融资。</p>
+            </div>
+            <a class="card-link" href="https://m.36kr.com/p/1723112718337" target="_blank" rel="noopener">参考：36 氪</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国内 · 儿童硬件</span>
+            <h3 class="card-title">前字节团队创业：无屏儿童口语陪练 AI 硬件</h3>
+            <div class="card-body">
+              <ul>
+                <li>无屏设计，专注儿童英语口语陪练场景，通过语音与 AI 互动，减少屏幕依赖。</li>
+                <li>代表「AI+教育硬件」的细分形态创新，团队具备大厂产品与算法背景。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>不做屏幕、只做「听和说」的儿童英语陪练设备，孩子跟 AI 对话练口语，减少盯屏时间；团队来自字节等大厂。</p>
+            </div>
+            <a class="card-link" href="https://www.36kr.com/p/3581375032605829" target="_blank" rel="noopener">参考：36 氪</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国际 · 生成式视觉</span>
+            <h3 class="card-title">ZMO.ai：AI 生成服装模特图，获 800 万美元 A 轮融资</h3>
+            <div class="card-body">
+              <ul>
+                <li>用 AI 生成服装展示用的模特图，电商/品牌可快速产出多风格、多场景的展示素材，降低实拍成本。</li>
+                <li>获 800 万美元 A 轮融资，代表「生成式 AI+垂直行业」的商业模式。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>上传服装图，AI 自动生成「模特穿这件衣服」的展示图，方便电商和品牌做图，减少真人拍摄；已拿到 A 轮融资。</p>
+            </div>
+            <a class="card-link" href="https://m.36kr.com/p/1747428579393154" target="_blank" rel="noopener">参考：36 氪</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国内 · 宠物硬件</span>
+            <h3 class="card-title">星联未来：华米高管创业做 AI 宠物硬件，千万元天使轮</h3>
+            <div class="card-body">
+              <ul>
+                <li>由华米两名副总裁创立，聚焦 AI 宠物硬件，将智能可穿戴与 AI 能力结合到宠物场景。</li>
+                <li>完成千万元级天使轮融资，体现「大厂高管+垂直场景硬件」的创业路径。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>做给宠物用的 AI 智能硬件（如可穿戴、互动设备），团队来自华米高层，已获千万级天使轮投资。</p>
+            </div>
+            <a class="card-link" href="https://www.36kr.com/p/3074076365419392" target="_blank" rel="noopener">参考：36 氪</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">国际 · 开发工具</span>
+            <h3 class="card-title">Apple Xcode 26.3 支持 Agent 编程，可接 Claude 与 OpenAI Codex</h3>
+            <div class="card-body">
+              <ul>
+                <li>Xcode 26.3 支持 Agent 式编程：开发者可在 IDE 内直接使用 Claude Agent 与 OpenAI Codex 完成编码与调试。</li>
+                <li>Google 预览 Developer Knowledge API 与 MCP 服务，便于 AI 访问最新文档。反映「IDE+AI Agent」成为标配。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>苹果开发工具里可以直接调用 Claude 和 OpenAI 的编程 AI，在写代码的界面里让 AI 帮忙写、改、查文档；谷歌也推了给 AI 用的文档接口。</p>
+            </div>
+            <a class="card-link" href="https://www.sdtimes.com/ai/this-week-in-ai-updates-claude-opus-4-6-gpt-5-3-codex-and-more-february-6-2026/" target="_blank" rel="noopener">参考：SD Times</a>
+          </article>
+        </section>
+        <section id="p3-m3" class="section">
+          <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
+          <p class="section-desc">TMT、500 强、费控报销与监管相关案例与趋势。</p>
+          <article class="card">
+            <span class="card-tag">趋势 · 2026 费控</span>
+            <h3 class="card-title">2026 财务费控报销五大趋势：无报销、L5 自动化、业财票税一体</h3>
+            <div class="card-body">
+              <ul>
+                <li>无报销模式：采用企业报销单量平均降约 92%，审核效率提升约 85%，资金周转率提高约 30%。</li>
+                <li>L5 级自动化：融合深度学习、NLP、图像识别，人工干预率可低至约 0.3%；业财票税一体化，数电票智能解析与区块链存证，对账周期从约 15 天缩至约 2 小时。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>越来越多企业用「免报销」或高度自动化流程：单子少了、审得快了、钱转得更快；AI 把票据、税务、对账一条龙处理，人工只处理极少数异常。</p>
+            </div>
+            <a class="card-link" href="https://c.m.163.com/news/a/KIEP7KPA0530JPVV.html" target="_blank" rel="noopener">参考：网易新闻</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">TMT · 报销智审</span>
+            <h3 class="card-title">中兴新云 × 腾讯云：报销 10 天→2 小时，AI 智审减 90% 人工</h3>
+            <div class="card-body">
+              <ul>
+                <li>智能报销：自然语言 + 拍照填单，流程从约 10 天压缩至约 2 小时。</li>
+                <li>AI 智审风险识别约 90%、人工审核量降约 90%；费用数字孪生 11 维分析，美宜佳等连锁已落地。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>说话/拍照即可填单，AI 自动审规则和风险，报销从十来天缩到两小时；系统还能对费用做多维度分析，已在连锁零售等场景使用。</p>
+            </div>
+            <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2613533?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">餐饮 · 共享中心</span>
+            <h3 class="card-title">餐饮集团财务共享：月均 6 万笔报销，智能提单与 15 分钟审单</h3>
+            <div class="card-body">
+              <ul>
+                <li>月均约 6 万笔报销场景下，智能提单准确率 98%+，单笔审核时效约 15 分钟内，正确率高于 99.7%。</li>
+                <li>释放人力转向数据分析、税务管理等高价值工作；体现「规模化+自动化+质检」的共享中心实践。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>大型餐饮集团每月 6 万笔报销，靠 AI 填单和审单：填单准、审得快、错得少，财务人员腾出手做分析和税务等更高价值工作。</p>
+            </div>
+            <a class="card-link" href="https://www.lingcai.cn/index.php?c=show&id=91" target="_blank" rel="noopener">参考：令才科技</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">监管 · 央行</span>
+            <h3 class="card-title">央行 2026 年工作部署：支付穿透监管、数字人民币、金融科技</h3>
+            <div class="card-body">
+              <ul>
+                <li>从严实施支付机构穿透式监管和支付业务功能监管；稳步发展数字人民币，优化管理体系。</li>
+                <li>深化科技管理与创新应用，扩大快速支付互联、推进二维码互联互通。与费控、反洗钱、受益所有人备案等形成协同环境。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>央行 2026 年重点包括：对支付机构「穿透式」监管、数字人民币推广、支付系统互联互通；为企业做财务与支付创新提供了明确的监管框架。</p>
+            </div>
+            <a class="card-link" href="https://www.mpaypass.com.cn/news/202601/06180936.html" target="_blank" rel="noopener">参考：移动支付网</a>
+          </article>
+        </section>
+        <section id="p3-m4" class="section">
+          <h2 class="section-title">云底座与 AI 融合</h2>
+          <p class="section-desc">全球公有云 IaaS/PaaS/数据库与 AI 场景融合。国内主流云厂商与垂类数据库。</p>
+          <div class="sub-head">国内云厂商</div>
+          <article class="card">
+            <span class="card-tag">阿里云 · PolarDB</span>
+            <h3 class="card-title">阿里云 PolarDB：AI 内生、Lakebase 湖库一体，重定义「AI 就绪数据库」</h3>
+            <div class="card-body">
+              <ul>
+                <li>2026 年 1 月发布 AI 数据湖库（Lakebase）等，从「外挂式」AI 走向「内生智能」：多模态数据一体管理，库内推理与 Agent，向量+全文融合检索，数据不出域。</li>
+                <li>PolarDB for AI 内置通义千问，支持 NL2SQL、情感分析、知识问答等；已服务超 2 万用户，金融、汽车、政务等落地。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>阿里云数据库把 AI 做进内核：在库里就能用自然语言查数、做分析，表格/文档/图片统一存和查，数据不用搬出去，已在金融、政务等大量使用。</p>
+            </div>
+            <a class="card-link" href="https://www.guancha.cn/economy/2026_01_20_804479.shtml" target="_blank" rel="noopener">参考：观察者网</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">选型 · 多云</span>
+            <h3 class="card-title">2026 AI 基础设施选型：阿里云/腾讯云/京东云/火山/百度智能云布局</h3>
+            <div class="card-body">
+              <ul>
+                <li>国内 AI 基础设施市场 2026 年规模将突破约 3500 亿美元，增速约 48%。各厂商围绕算力-存储-算法-安全构建壁垒。</li>
+                <li>腾讯云：云原生、多芯片、单集群数十万卡；京东云：国产芯片与金融级安全；火山引擎：MaaS 一体化、推理优化；百度：飞桨+昆仑芯、国产化协同。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>国内几家大云都在押注 AI 基建：有的拼算力规模，有的拼安全与国产化，有的拼模型和推理性能；选型时可按「算力、安全、模型生态」对号入座。</p>
+            </div>
+            <a class="card-link" href="https://www.csdn.net/article/2026-01-26/157398591" target="_blank" rel="noopener">参考：CSDN</a>
+          </article>
+          <article class="card">
+            <span class="card-tag">趋势 · 智能自治</span>
+            <h3 class="card-title">AI 重塑数据库：向量检索、智能运维、隐私与跨云</h3>
+            <div class="card-body">
+              <ul>
+                <li>向量检索内置：OceanBase 等集成向量索引，查询性能提升约 300%；华为云 DAS 慢 SQL 诊断、索引推荐、容量预测。</li>
+                <li>隐私保护：联邦学习、TEE、动态脱敏；跨云互操作：Iceberg、多云部署。Oracle 26ai 支持库内推理、混合向量检索与 Agent 工作流。</li>
+              </ul>
+              <p class="glossary-say"><strong>通俗说：</strong>数据库普遍在加「按意思检索」、自动调优和运维、数据脱敏与跨云能力；Oracle 等也在库里跑 AI 和 Agent，数据库越来越「自带智能」。</p>
+            </div>
+            <a class="card-link" href="https://cloud.tencent.com.cn/developer/article/2560364?policyId=1003" target="_blank" rel="noopener">参考：腾讯云开发者</a>
+          </article>
+        </section>
+        <footer>本简报基于公开报道整理，仅供内部学习与参考，不构成投资或商业决策建议。</footer>
+      </div>
+
+      <!-- 第 4 期：占位，后续更新时替换内容 -->
+      <div id="issue-4" class="issue-panel">
+        <header class="issue-header">
+          <h1>第 4 期</h1>
+          <p class="sub">本期内容将于 2026 年 3 月上旬更新。</p>
+          <p class="meta">计划区间：2026-02-16 ～ 2026-03-01</p>
+          <div class="glossary">
+            <span class="glossary-title">💡 阅读说明</span>
+            <p style="margin:0 0 8px;">为方便不熟悉技术名词的读者，简报中部分内容附有<strong>「通俗说」</strong>白话解读；下方<strong>「术语简表」</strong>可随时查阅。</p>
+            <details class="glossary-details">
+              <summary class="glossary-title">术语简表（点击展开）</summary>
+              <dl style="margin:8px 0 0;">
+                <dt>大模型 / 大语言模型</dt><dd>能理解与生成文字的 AI，参数规模越大通常能力越强。</dd>
+                <dt>开源</dt><dd>代码或模型公开，开发者可免费使用、二次开发。</dd>
+                <dt>Agent / 智能体</dt><dd>能按步骤执行任务的 AI，不只聊天，还能操作软件、查数据、发邮件等。</dd>
+                <dt>端侧 / 端云一体</dt><dd>在手机、电脑本地跑一部分 AI，再结合云端，兼顾速度与隐私。</dd>
+                <dt>RAG</dt><dd>检索增强生成：先查企业资料/知识库再回答，减少 AI「瞎编」。</dd>
+                <dt>IaaS / PaaS</dt><dd>云计算形态：IaaS 约等于租服务器，PaaS 约等于租平台能力（如数据库、AI 接口）。</dd>
+                <dt>向量检索 / 语义检索</dt><dd>按「意思」找相似内容，而不是只按关键词匹配。</dd>
+                <dt>基准 / 评测</dt><dd>用统一题目给不同 AI 打分，便于横向对比。</dd>
+                <dt>HLE / 综合能力评测</dt><dd>一种综合考察 AI 多维度能力的分数，分数越高表示整体能力越强。</dd>
+                <dt>库内推理</dt><dd>在数据库内部直接调用 AI 计算，数据不用导出，更快、更安全。</dd>
+                <dt>OCR</dt><dd>把图片里的文字识别成可编辑文本的技术。</dd>
+                <dt>数字孪生</dt><dd>用系统里的数据「复制」真实业务，便于做分析和预测。</dd>
+              </dl>
+            </details>
+          </div>
+        </header>
+        <nav class="nav-inline">
+          <a href="#p4-m1">头部产品动态</a>
+          <a href="#p4-m2">新兴产品与创新</a>
+          <a href="#p4-m3">财务 AI 最佳实践</a>
+          <a href="#p4-m4">云底座与 AI 融合</a>
+        </nav>
+        <div class="legend">
+          <span class="legend-title">图例</span>
+          <span class="legend-item"><span class="legend-dot m1"></span>头部产品</span>
+          <span class="legend-item"><span class="legend-dot m2"></span>新兴产品</span>
+          <span class="legend-item"><span class="legend-dot m3"></span>财务实践</span>
+          <span class="legend-item"><span class="legend-dot m4"></span>云底座融合</span>
+        </div>
+        <section id="p4-m1" class="section">
+          <h2 class="section-title">国内外行业重量级产品动态</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section id="p3-m2" class="section">
+        <section id="p4-m2" class="section">
           <h2 class="section-title">新涌现品牌与产品创新</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section id="p3-m3" class="section">
+        <section id="p4-m3" class="section">
           <h2 class="section-title">企业财务管理 AI 最佳实践</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
             <p>敬请期待 · 双周更新后在此展示</p>
           </div>
         </section>
-        <section id="p3-m4" class="section">
+        <section id="p4-m4" class="section">
           <h2 class="section-title">云底座与 AI 融合</h2>
           <div class="placeholder-section">
             <div class="icon">📋</div>
@@ -1208,10 +1586,15 @@
               <li><span class="timeline-module m3"><span class="timeline-dot"></span>财务</span> 湖州银行生成式 AI 风控入选央行创新应用</li>
             </ul>
           </li>
-          <li class="timeline-item">
-            <div class="timeline-month">2 月</div>
+          <li class="timeline-item has-events">
+            <div class="timeline-month">2 月上旬</div>
             <ul class="timeline-events">
-              <li class="empty">敬请期待 · 第 3 期更新后补充</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 阿里 Qwen2.5-Max 发布，MoE 多项基准超 DeepSeek V3</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> Claude Opus 4.6、GPT-5.3-Codex 发布（2.6 前后）</li>
+              <li><span class="timeline-module m1"><span class="timeline-dot"></span>头部</span> 腾讯元宝接入 DeepSeek 双模型，混元加持读图</li>
+              <li><span class="timeline-module m2"><span class="timeline-dot"></span>新兴</span> 虎鲸跳跃 Pre-A 融资；ZMO.ai、星联未来等融资/产品</li>
+              <li><span class="timeline-module m3"><span class="timeline-dot"></span>财务</span> 2026 费控趋势：无报销、L5 自动化、业财票税一体</li>
+              <li><span class="timeline-module m4"><span class="timeline-dot"></span>云底座</span> PolarDB Lakebase、多云 AI 选型与智能自治趋势</li>
             </ul>
           </li>
           <li class="timeline-item">
@@ -1291,6 +1674,7 @@
         buttons.forEach(function(b) {
           b.classList.toggle('active', b.getAttribute('data-issue') === String(issueId));
         });
+        document.body.classList.toggle('cny-theme', issueId === '3');
       }
 
       buttons.forEach(function(btn) {
@@ -1298,6 +1682,8 @@
           setActive(this.getAttribute('data-issue'));
         });
       });
+
+      setActive('3');
     })();
   </script>
 </body>
